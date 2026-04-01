@@ -1,0 +1,1886 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Car Center 61 – Gebrauchtwagen & Service | Sachsenheim</title>
+  <meta name="description" content="Car Center 61 in Sachsenheim – Ihr Spezialist für geprüfte Gebrauchtwagen, KFZ-Reparatur und TÜV. Faire Preise, transparente Beratung seit über 15 Jahren." />
+  <meta property="og:title" content="Car Center 61 – Premium Gebrauchtwagen Sachsenheim" />
+  <meta property="og:description" content="Geprüfte Gebrauchtwagen, Reparatur, TÜV & Service. Besuchen Sie uns in Sachsenheim." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://car-center-61.pages.dev" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "AutoDealer",
+    "name": "Car Center 61",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Bertha-Benz-Straße 7",
+      "postalCode": "74343",
+      "addressLocality": "Sachsenheim",
+      "addressCountry": "DE"
+    },
+    "telephone": "+497147220038",
+    "url": "https://car-center-61.pages.dev",
+    "openingHours": "Mo-Fr 09:00-18:00",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.0",
+      "reviewCount": "28"
+    }
+  }
+  </script>
+
+  <style>
+    :root {
+      --black: #080808;
+      --deep: #0f0f0f;
+      --surface: #161616;
+      --card: #1c1c1c;
+      --border: rgba(255,255,255,0.07);
+      --red: #c0392b;
+      --red-bright: #e74c3c;
+      --silver: #a8a8a8;
+      --silver-light: #d4d4d4;
+      --white: #f5f5f5;
+      --gold: #c9a96e;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+      overflow-x: hidden;
+    }
+
+    /* ── LANGUAGE SWITCHER ── */
+    .lang-bar {
+      background: var(--deep);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      padding: 8px 40px;
+      gap: 6px;
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1001;
+    }
+    .lang-bar button {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--silver);
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      padding: 4px 10px;
+      cursor: pointer;
+      transition: all 0.2s;
+      border-radius: 2px;
+    }
+    .lang-bar button:hover,
+    .lang-bar button.active {
+      background: var(--red);
+      border-color: var(--red);
+      color: #fff;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 37px; left: 0; right: 0;
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 40px;
+      background: rgba(8,8,8,0.92);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      transition: padding 0.3s;
+    }
+    nav.scrolled { padding: 12px 40px; }
+
+    .logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 28px;
+      letter-spacing: 3px;
+      color: var(--white);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .logo span { color: var(--red-bright); }
+    .logo-icon {
+      width: 36px; height: 36px;
+      background: var(--red);
+      display: flex; align-items: center; justify-content: center;
+      clip-path: polygon(10% 0%, 90% 0%, 100% 50%, 90% 100%, 10% 100%, 0% 50%);
+    }
+    .logo-icon svg { width: 20px; height: 20px; fill: white; }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+    .nav-links a {
+      color: var(--silver);
+      text-decoration: none;
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 600;
+      font-size: 14px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      transition: color 0.2s;
+      position: relative;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px; left: 0;
+      width: 0; height: 1px;
+      background: var(--red-bright);
+      transition: width 0.3s;
+    }
+    .nav-links a:hover { color: var(--white); }
+    .nav-links a:hover::after { width: 100%; }
+
+    .nav-cta {
+      background: var(--red);
+      color: #fff !important;
+      padding: 10px 22px;
+      font-family: 'Rajdhani', sans-serif !important;
+      font-weight: 700 !important;
+      font-size: 13px !important;
+      letter-spacing: 2px !important;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.2s !important;
+      border: 1px solid var(--red);
+      clip-path: polygon(6px 0%, 100% 0%, calc(100% - 6px) 100%, 0% 100%);
+    }
+    .nav-cta:hover { background: var(--red-bright) !important; transform: translateY(-1px); }
+    .nav-cta::after { display: none !important; }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px; height: 2px;
+      background: var(--silver-light);
+      transition: all 0.3s;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      padding-top: 110px;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 60% 40%, rgba(192,57,43,0.12) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 40% at 80% 80%, rgba(192,57,43,0.06) 0%, transparent 50%),
+        linear-gradient(135deg, #080808 0%, #111 50%, #0a0a0a 100%);
+    }
+
+    /* animated grid lines */
+    .hero-bg::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse 70% 70% at center, black 0%, transparent 70%);
+    }
+
+    /* Speed lines */
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      right: -10%;
+      top: 20%;
+      width: 60%;
+      height: 60%;
+      background: repeating-linear-gradient(
+        -45deg,
+        transparent,
+        transparent 40px,
+        rgba(192,57,43,0.03) 40px,
+        rgba(192,57,43,0.03) 41px
+      );
+      animation: slideLines 20s linear infinite;
+    }
+    @keyframes slideLines {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-80px); }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 1100px;
+      width: 100%;
+      padding: 0 40px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .hero-text { animation: fadeSlideUp 0.8s ease both; }
+    @keyframes fadeSlideUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(192,57,43,0.15);
+      border: 1px solid rgba(192,57,43,0.4);
+      padding: 6px 14px;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--red-bright);
+      margin-bottom: 24px;
+    }
+    .hero-badge::before {
+      content: '';
+      width: 6px; height: 6px;
+      background: var(--red-bright);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(1.5); }
+    }
+
+    .hero h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(56px, 7vw, 88px);
+      line-height: 0.95;
+      letter-spacing: 2px;
+      color: var(--white);
+      margin-bottom: 20px;
+    }
+    .hero h1 em {
+      font-style: normal;
+      color: var(--red-bright);
+      display: block;
+    }
+
+    .hero-sub {
+      font-size: 16px;
+      line-height: 1.7;
+      color: var(--silver);
+      max-width: 460px;
+      margin-bottom: 36px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--red);
+      color: #fff;
+      padding: 14px 30px;
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: 1px solid var(--red);
+      transition: all 0.25s;
+      clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+    }
+    .btn-primary:hover {
+      background: var(--red-bright);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(192,57,43,0.4);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--silver-light);
+      padding: 14px 30px;
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 600;
+      font-size: 14px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: 1px solid rgba(255,255,255,0.2);
+      transition: all 0.25s;
+      clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+    }
+    .btn-outline:hover {
+      border-color: var(--silver);
+      color: var(--white);
+      background: rgba(255,255,255,0.05);
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 28px;
+      margin-top: 44px;
+    }
+    .stat {
+      border-left: 2px solid var(--red);
+      padding-left: 14px;
+    }
+    .stat-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 36px;
+      letter-spacing: 1px;
+      color: var(--white);
+      line-height: 1;
+    }
+    .stat-label {
+      font-size: 11px;
+      color: var(--silver);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-top: 2px;
+    }
+
+    /* Hero visual panel */
+    .hero-visual {
+      animation: fadeSlideUp 0.8s 0.2s ease both;
+      position: relative;
+    }
+
+    .hero-car-display {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-top: 2px solid var(--red);
+      padding: 30px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-car-display::before {
+      content: 'FEATURED';
+      position: absolute;
+      top: 12px; right: 12px;
+      background: var(--red);
+      color: #fff;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      padding: 3px 10px;
+    }
+
+    .car-svg-container {
+      width: 100%;
+      aspect-ratio: 16/9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #111 0%, #0d0d0d 100%);
+      margin-bottom: 20px;
+      position: relative;
+      overflow: hidden;
+    }
+    /* Animated car illustration */
+    .car-svg-container::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--red), transparent);
+      animation: scanLine 3s ease-in-out infinite;
+    }
+    @keyframes scanLine {
+      0% { opacity: 0; transform: scaleX(0); }
+      50% { opacity: 1; transform: scaleX(1); }
+      100% { opacity: 0; transform: scaleX(0); }
+    }
+
+    .featured-car-info {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: end;
+      gap: 10px;
+    }
+    .featured-car-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 24px;
+      letter-spacing: 2px;
+      color: var(--white);
+    }
+    .featured-car-sub {
+      font-size: 12px;
+      color: var(--silver);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+    .featured-car-price {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 28px;
+      color: var(--gold);
+      letter-spacing: 1px;
+    }
+    .featured-car-price span {
+      font-size: 14px;
+      font-family: 'Rajdhani', sans-serif;
+      color: var(--silver);
+    }
+
+    .car-tags {
+      display: flex;
+      gap: 8px;
+      margin-top: 14px;
+      flex-wrap: wrap;
+    }
+    .car-tag {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid var(--border);
+      color: var(--silver);
+      font-size: 11px;
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 600;
+      letter-spacing: 1px;
+      padding: 4px 10px;
+    }
+
+    /* ── SERVICES ── */
+    .section {
+      padding: 100px 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-header {
+      margin-bottom: 60px;
+    }
+    .section-label {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--red-bright);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .section-label::after {
+      content: '';
+      flex: 1;
+      max-width: 40px;
+      height: 1px;
+      background: var(--red);
+    }
+
+    .section-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(42px, 5vw, 64px);
+      letter-spacing: 2px;
+      color: var(--white);
+      line-height: 1;
+    }
+    .section-title em {
+      font-style: normal;
+      color: var(--red-bright);
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      background: var(--border);
+      border: 1px solid var(--border);
+    }
+
+    .service-card {
+      background: var(--surface);
+      padding: 40px 32px;
+      position: relative;
+      overflow: hidden;
+      transition: background 0.3s;
+      cursor: default;
+    }
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 3px; height: 0;
+      background: var(--red);
+      transition: height 0.4s ease;
+    }
+    .service-card:hover::before { height: 100%; }
+    .service-card:hover { background: var(--card); }
+
+    .service-number {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 64px;
+      letter-spacing: 2px;
+      color: rgba(255,255,255,0.04);
+      position: absolute;
+      top: 10px; right: 20px;
+      line-height: 1;
+    }
+
+    .service-icon {
+      width: 52px; height: 52px;
+      background: rgba(192,57,43,0.12);
+      border: 1px solid rgba(192,57,43,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 22px;
+      transition: background 0.3s;
+    }
+    .service-card:hover .service-icon {
+      background: rgba(192,57,43,0.25);
+    }
+    .service-icon svg {
+      width: 24px; height: 24px;
+      stroke: var(--red-bright);
+      fill: none;
+      stroke-width: 1.5;
+    }
+
+    .service-title {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+    .service-desc {
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--silver);
+    }
+
+    /* ── FAHRZEUGE ── */
+    .fahrzeuge-bg {
+      background: var(--deep);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .fahrzeuge-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .fz-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .fz-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.5), 0 0 0 1px rgba(192,57,43,0.3);
+    }
+
+    .fz-img {
+      aspect-ratio: 16/10;
+      background: linear-gradient(135deg, #181818, #111);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .fz-img::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, transparent 60%, rgba(0,0,0,0.6) 100%);
+    }
+
+    .fz-badge {
+      position: absolute;
+      top: 12px; left: 12px;
+      background: var(--red);
+      color: #fff;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      padding: 3px 10px;
+      z-index: 1;
+    }
+
+    /* Car SVG illustration */
+    .car-illus {
+      width: 80%;
+    }
+
+    .fz-body { padding: 20px; }
+    .fz-make {
+      font-size: 11px;
+      color: var(--red-bright);
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+    .fz-model {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 22px;
+      letter-spacing: 1px;
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+    .fz-specs {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 16px;
+    }
+    .fz-spec {
+      font-size: 12px;
+      color: var(--silver);
+      font-family: 'Rajdhani', sans-serif;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .fz-spec-dot {
+      width: 3px; height: 3px;
+      background: var(--red);
+      border-radius: 50%;
+    }
+    .fz-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 14px;
+      border-top: 1px solid var(--border);
+    }
+    .fz-price {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 26px;
+      color: var(--gold);
+      letter-spacing: 1px;
+    }
+    .fz-anfrage {
+      background: transparent;
+      border: 1px solid var(--red);
+      color: var(--red-bright);
+      padding: 8px 16px;
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700;
+      font-size: 12px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-decoration: none;
+    }
+    .fz-anfrage:hover {
+      background: var(--red);
+      color: #fff;
+    }
+
+    .fahrzeuge-cta {
+      text-align: center;
+      margin-top: 48px;
+    }
+
+    /* ── ÜBER UNS ── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .about-visual {
+      position: relative;
+    }
+
+    .about-main-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--red);
+      padding: 40px;
+      position: relative;
+    }
+
+    .about-accent-box {
+      position: absolute;
+      bottom: -24px;
+      right: -24px;
+      background: var(--red);
+      padding: 24px 28px;
+      z-index: 2;
+    }
+    .about-accent-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 52px;
+      color: #fff;
+      line-height: 1;
+    }
+    .about-accent-text {
+      font-size: 11px;
+      color: rgba(255,255,255,0.8);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .workshop-svg {
+      width: 100%;
+    }
+
+    .about-text .section-label { margin-bottom: 12px; }
+    .about-text .section-title { margin-bottom: 24px; }
+
+    .about-body {
+      font-size: 15px;
+      line-height: 1.8;
+      color: var(--silver);
+      margin-bottom: 28px;
+    }
+
+    .about-features {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 36px;
+    }
+    .about-feature {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 14px;
+      color: var(--silver-light);
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 600;
+    }
+    .about-feature::before {
+      content: '▸';
+      color: var(--red-bright);
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* ── REVIEWS ── */
+    .reviews-bg {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+    }
+
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      background: var(--border);
+    }
+
+    .review-card {
+      background: var(--deep);
+      padding: 32px;
+      position: relative;
+    }
+    .review-quote {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 72px;
+      color: rgba(192,57,43,0.2);
+      line-height: 0.7;
+      margin-bottom: 16px;
+    }
+    .review-stars {
+      color: var(--gold);
+      font-size: 16px;
+      letter-spacing: 2px;
+      margin-bottom: 14px;
+    }
+    .review-text {
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--silver);
+      margin-bottom: 20px;
+    }
+    .review-author {
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      letter-spacing: 1px;
+      color: var(--white);
+    }
+    .review-platform {
+      font-size: 11px;
+      color: var(--silver);
+      margin-top: 2px;
+    }
+
+    /* ── KONTAKT / MAPS ── */
+    .kontakt-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 0;
+      border: 1px solid var(--border);
+      overflow: hidden;
+    }
+
+    .kontakt-info {
+      background: var(--surface);
+      padding: 50px 40px;
+      border-right: 1px solid var(--border);
+    }
+
+    .kontakt-item {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      margin-bottom: 28px;
+      padding-bottom: 28px;
+      border-bottom: 1px solid var(--border);
+    }
+    .kontakt-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+    .kontakt-icon {
+      width: 44px; height: 44px;
+      background: rgba(192,57,43,0.12);
+      border: 1px solid rgba(192,57,43,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .kontakt-icon svg {
+      width: 20px; height: 20px;
+      stroke: var(--red-bright);
+      fill: none;
+      stroke-width: 1.5;
+    }
+
+    .kontakt-label {
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700;
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--red-bright);
+      margin-bottom: 4px;
+    }
+    .kontakt-value {
+      font-size: 15px;
+      color: var(--white);
+      line-height: 1.5;
+    }
+    .kontakt-value a {
+      color: var(--white);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .kontakt-value a:hover { color: var(--red-bright); }
+
+    .map-container {
+      background: #0d0d0d;
+      position: relative;
+      min-height: 480px;
+    }
+    .map-container iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      filter: invert(90%) hue-rotate(180deg) saturate(0.8);
+      min-height: 480px;
+    }
+    .map-overlay {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      background: rgba(8,8,8,0.9);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--red);
+      padding: 12px 18px;
+    }
+    .map-overlay-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 16px;
+      letter-spacing: 1px;
+      color: var(--white);
+    }
+    .map-overlay-addr {
+      font-size: 12px;
+      color: var(--silver);
+    }
+
+    /* ── WHATSAPP ── */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      z-index: 999;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 10px;
+    }
+
+    .wa-tooltip {
+      background: rgba(8,8,8,0.9);
+      border: 1px solid var(--border);
+      color: var(--silver-light);
+      font-size: 13px;
+      font-family: 'Rajdhani', sans-serif;
+      padding: 8px 14px;
+      white-space: nowrap;
+      opacity: 0;
+      transform: translateX(10px);
+      transition: all 0.3s;
+      pointer-events: none;
+    }
+    .whatsapp-float:hover .wa-tooltip {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .wa-btn {
+      width: 58px; height: 58px;
+      background: #25D366;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+      transition: transform 0.3s, box-shadow 0.3s;
+      text-decoration: none;
+    }
+    .wa-btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 8px 30px rgba(37,211,102,0.5);
+    }
+    .wa-btn svg {
+      width: 28px; height: 28px;
+      fill: white;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--deep);
+      border-top: 1px solid var(--border);
+      padding: 48px 40px 28px;
+    }
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .footer-top {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr;
+      gap: 48px;
+      margin-bottom: 40px;
+    }
+    .footer-brand .logo { margin-bottom: 16px; display: inline-flex; }
+    .footer-desc {
+      font-size: 13px;
+      color: var(--silver);
+      line-height: 1.7;
+      max-width: 280px;
+    }
+    .footer-title {
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700;
+      font-size: 13px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--red-bright);
+      margin-bottom: 16px;
+    }
+    .footer-links { list-style: none; }
+    .footer-links li { margin-bottom: 10px; }
+    .footer-links a {
+      color: var(--silver);
+      text-decoration: none;
+      font-size: 13px;
+      transition: color 0.2s;
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 500;
+    }
+    .footer-links a:hover { color: var(--white); }
+    .footer-bottom {
+      border-top: 1px solid var(--border);
+      padding-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+      color: rgba(255,255,255,0.3);
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    /* Scroll reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+
+    /* Mobile menu */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(8,8,8,0.98);
+      z-index: 2000;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 30px;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 42px;
+      letter-spacing: 3px;
+      color: var(--white);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .mobile-menu a:hover { color: var(--red-bright); }
+    .mobile-close {
+      position: absolute;
+      top: 28px; right: 28px;
+      background: none;
+      border: none;
+      color: var(--silver);
+      font-size: 28px;
+      cursor: pointer;
+    }
+
+    @media (max-width: 900px) {
+      .nav-links, .nav-cta { display: none; }
+      .hamburger { display: flex; }
+      .hero-content { grid-template-columns: 1fr; gap: 40px; padding: 0 20px; }
+      .hero-visual { display: none; }
+      .services-grid { grid-template-columns: 1fr; }
+      .fahrzeuge-grid { grid-template-columns: 1fr; }
+      .about-grid { grid-template-columns: 1fr; gap: 40px; }
+      .about-accent-box { bottom: -16px; right: -10px; }
+      .reviews-grid { grid-template-columns: 1fr; }
+      .kontakt-grid { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr; gap: 30px; }
+      nav, .lang-bar { padding-left: 20px; padding-right: 20px; }
+      .section { padding: 60px 20px; }
+      footer { padding: 40px 20px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Language switcher -->
+<div class="lang-bar">
+  <button class="active" onclick="setLang('de')">DE</button>
+  <button onclick="setLang('en')">EN</button>
+  <button onclick="setLang('tr')">TR</button>
+</div>
+
+<!-- Navigation -->
+<nav id="navbar">
+  <a href="#" class="logo">
+    <div class="logo-icon">
+      <svg viewBox="0 0 24 24"><path d="M5 17H3a2 2 0 01-2-2V5a2 2 0 012-2h11a2 2 0 012 2v3m-4 12H9a2 2 0 01-2-2v-4a2 2 0 012-2h10a2 2 0 012 2v4a2 2 0 01-2 2z"/></svg>
+    </div>
+    CAR CENTER <span>61</span>
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#services" class="lang-key" data-de="Leistungen" data-en="Services" data-tr="Hizmetler">Leistungen</a></li>
+    <li><a href="#fahrzeuge" class="lang-key" data-de="Fahrzeuge" data-en="Vehicles" data-tr="Araçlar">Fahrzeuge</a></li>
+    <li><a href="#about" class="lang-key" data-de="Über uns" data-en="About" data-tr="Hakkımızda">Über uns</a></li>
+    <li><a href="#kontakt" class="lang-key" data-de="Kontakt" data-en="Contact" data-tr="İletişim">Kontakt</a></li>
+  </ul>
+  <a href="tel:+497147220038" class="nav-cta lang-key" data-de="Jetzt anrufen" data-en="Call now" data-tr="Hemen ara">Jetzt anrufen</a>
+  <div class="hamburger" onclick="openMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- Mobile menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" onclick="closeMenu()">✕</button>
+  <a href="#services" onclick="closeMenu()" class="lang-key" data-de="Leistungen" data-en="Services" data-tr="Hizmetler">Leistungen</a>
+  <a href="#fahrzeuge" onclick="closeMenu()" class="lang-key" data-de="Fahrzeuge" data-en="Vehicles" data-tr="Araçlar">Fahrzeuge</a>
+  <a href="#about" onclick="closeMenu()" class="lang-key" data-de="Über uns" data-en="About" data-tr="Hakkımızda">Über uns</a>
+  <a href="#kontakt" onclick="closeMenu()" class="lang-key" data-de="Kontakt" data-en="Contact" data-tr="İletişim">Kontakt</a>
+  <a href="tel:+497147220038">☎ 07147 220038</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="hero-text">
+      <div class="hero-badge lang-key" data-de="Sachsenheim · Seit 15 Jahren" data-en="Sachsenheim · Since 15 Years" data-tr="Sachsenheim · 15 Yıldır">Sachsenheim · Seit 15 Jahren</div>
+      <h1>
+        <span class="lang-key" data-de="IHR AUTO." data-en="YOUR CAR." data-tr="ARACINİZ.">IHR AUTO.</span>
+        <em class="lang-key" data-de="UNSER SERVICE." data-en="OUR SERVICE." data-tr="BİZİM HİZMETİMİZ.">UNSER SERVICE.</em>
+      </h1>
+      <p class="hero-sub lang-key"
+        data-de="Geprüfte Gebrauchtwagen, professionelle Reparaturen und TÜV-Service – alles aus einer Hand in Sachsenheim."
+        data-en="Certified used cars, professional repairs and TÜV service – all from one place in Sachsenheim."
+        data-tr="Kontrol edilmiş ikinci el araçlar, profesyonel tamirler ve TÜV hizmeti – hepsi Sachsenheim'da tek bir çatı altında.">
+        Geprüfte Gebrauchtwagen, professionelle Reparaturen und TÜV-Service – alles aus einer Hand in Sachsenheim.
+      </p>
+      <div class="hero-buttons">
+        <a href="#fahrzeuge" class="btn-primary lang-key" data-de="Fahrzeuge entdecken" data-en="Browse Vehicles" data-tr="Araçları Gör">Fahrzeuge entdecken</a>
+        <a href="#kontakt" class="btn-outline lang-key" data-de="Kontakt aufnehmen" data-en="Get in touch" data-tr="İletişime Geç">Kontakt aufnehmen</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat">
+          <div class="stat-num">15+</div>
+          <div class="stat-label lang-key" data-de="Jahre Erfahrung" data-en="Years Exp." data-tr="Yıl Deneyim">Jahre Erfahrung</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">4.0★</div>
+          <div class="stat-label lang-key" data-de="Google Bewertung" data-en="Google Rating" data-tr="Google Puanı">Google Bewertung</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">28</div>
+          <div class="stat-label lang-key" data-de="Kundenbewertungen" data-en="Reviews" data-tr="Değerlendirme">Kundenbewertungen</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-car-display">
+        <div class="car-svg-container">
+          <svg class="car-illus" viewBox="0 0 500 220" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="bodyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#2a2a2a"/>
+                <stop offset="50%" style="stop-color:#1a1a1a"/>
+                <stop offset="100%" style="stop-color:#0d0d0d"/>
+              </linearGradient>
+              <linearGradient id="roofGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" style="stop-color:#333"/>
+                <stop offset="100%" style="stop-color:#1a1a1a"/>
+              </linearGradient>
+              <linearGradient id="glassGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#1a3a4a;stop-opacity:0.8"/>
+                <stop offset="100%" style="stop-color:#0d2030;stop-opacity:0.6"/>
+              </linearGradient>
+              <filter id="glow">
+                <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+              </filter>
+            </defs>
+            <!-- Ground shadow -->
+            <ellipse cx="250" cy="210" rx="220" ry="10" fill="rgba(0,0,0,0.5)"/>
+            <!-- Main body -->
+            <path d="M60 155 L80 115 L120 90 L180 75 L240 72 L300 75 L360 80 L400 100 L430 130 L440 155 Z" fill="url(#bodyGrad)" stroke="#333" stroke-width="1"/>
+            <!-- Roof -->
+            <path d="M140 112 L175 82 L230 70 L290 68 L340 75 L370 95 L365 112 Z" fill="url(#roofGrad)" stroke="#2a2a2a" stroke-width="1"/>
+            <!-- Windshield -->
+            <path d="M150 110 L178 82 L228 72 L228 110 Z" fill="url(#glassGrad)" stroke="#1a3a4a" stroke-width="1" opacity="0.9"/>
+            <!-- Rear window -->
+            <path d="M295 68 L338 76 L362 96 L362 110 L295 110 Z" fill="url(#glassGrad)" stroke="#1a3a4a" stroke-width="1" opacity="0.9"/>
+            <!-- Side windows -->
+            <rect x="235" y="70" width="55" height="40" rx="2" fill="url(#glassGrad)" stroke="#1a3a4a" stroke-width="1" opacity="0.8"/>
+            <!-- Door lines -->
+            <line x1="228" y1="72" x2="225" y2="155" stroke="#444" stroke-width="1.5"/>
+            <line x1="295" y1="68" x2="295" y2="155" stroke="#444" stroke-width="1.5"/>
+            <line x1="365" y1="110" x2="365" y2="155" stroke="#444" stroke-width="1.5"/>
+            <!-- Door handles -->
+            <rect x="258" y="120" width="18" height="4" rx="2" fill="#555"/>
+            <rect x="330" y="118" width="18" height="4" rx="2" fill="#555"/>
+            <!-- Headlight left -->
+            <ellipse cx="102" cy="130" rx="18" ry="10" fill="#c0392b" opacity="0.3"/>
+            <ellipse cx="102" cy="130" rx="12" ry="7" fill="#e74c3c" filter="url(#glow)" opacity="0.8"/>
+            <!-- DRL strip left -->
+            <rect x="76" y="125" width="20" height="2" rx="1" fill="#e74c3c" filter="url(#glow)"/>
+            <!-- Taillight right -->
+            <ellipse cx="418" cy="130" rx="16" ry="9" fill="#c0392b" opacity="0.3"/>
+            <ellipse cx="418" cy="130" rx="10" ry="6" fill="#e74c3c" filter="url(#glow)" opacity="0.9"/>
+            <rect x="405" y="124" width="22" height="2" rx="1" fill="#c0392b"/>
+            <!-- Grille -->
+            <rect x="82" y="138" width="32" height="14" rx="2" fill="#111" stroke="#333" stroke-width="1"/>
+            <line x1="88" y1="138" x2="88" y2="152" stroke="#333" stroke-width="1"/>
+            <line x1="96" y1="138" x2="96" y2="152" stroke="#333" stroke-width="1"/>
+            <line x1="104" y1="138" x2="104" y2="152" stroke="#333" stroke-width="1"/>
+            <!-- Bumper -->
+            <path d="M65 153 L108 153 L108 162 L65 162 Z" fill="#222" stroke="#333" stroke-width="1"/>
+            <path d="M395 145 L440 148 L440 160 L392 158 Z" fill="#222" stroke="#333" stroke-width="1"/>
+            <!-- Wheels -->
+            <circle cx="155" cy="175" r="32" fill="#111" stroke="#333" stroke-width="2"/>
+            <circle cx="155" cy="175" r="24" fill="#0d0d0d" stroke="#444" stroke-width="1.5"/>
+            <circle cx="155" cy="175" r="8" fill="#222"/>
+            <line x1="155" y1="155" x2="155" y2="171" stroke="#555" stroke-width="2"/>
+            <line x1="155" y1="179" x2="155" y2="195" stroke="#555" stroke-width="2"/>
+            <line x1="135" y1="175" x2="151" y2="175" stroke="#555" stroke-width="2"/>
+            <line x1="159" y1="175" x2="175" y2="175" stroke="#555" stroke-width="2"/>
+            <line x1="141" y1="161" x2="151" y2="171" stroke="#555" stroke-width="1.5"/>
+            <line x1="159" y1="179" x2="169" y2="189" stroke="#555" stroke-width="1.5"/>
+            <line x1="169" y1="161" x2="159" y2="171" stroke="#555" stroke-width="1.5"/>
+            <line x1="141" y1="189" x2="151" y2="179" stroke="#555" stroke-width="1.5"/>
+
+            <circle cx="360" cy="175" r="32" fill="#111" stroke="#333" stroke-width="2"/>
+            <circle cx="360" cy="175" r="24" fill="#0d0d0d" stroke="#444" stroke-width="1.5"/>
+            <circle cx="360" cy="175" r="8" fill="#222"/>
+            <line x1="360" y1="155" x2="360" y2="171" stroke="#555" stroke-width="2"/>
+            <line x1="360" y1="179" x2="360" y2="195" stroke="#555" stroke-width="2"/>
+            <line x1="340" y1="175" x2="356" y2="175" stroke="#555" stroke-width="2"/>
+            <line x1="364" y1="175" x2="380" y2="175" stroke="#555" stroke-width="2"/>
+            <line x1="346" y1="161" x2="356" y2="171" stroke="#555" stroke-width="1.5"/>
+            <line x1="364" y1="179" x2="374" y2="189" stroke="#555" stroke-width="1.5"/>
+            <line x1="374" y1="161" x2="364" y2="171" stroke="#555" stroke-width="1.5"/>
+            <line x1="346" y1="189" x2="356" y2="179" stroke="#555" stroke-width="1.5"/>
+
+            <!-- Wheel arch -->
+            <path d="M123 175 Q123 148 155 148 Q187 148 187 175" stroke="#333" stroke-width="2" fill="none"/>
+            <path d="M328 175 Q328 148 360 148 Q392 148 392 175" stroke="#333" stroke-width="2" fill="none"/>
+
+            <!-- Roof rack accent line -->
+            <line x1="142" y1="70" x2="362" y2="68" stroke="#c0392b" stroke-width="2" opacity="0.6"/>
+
+            <!-- CC61 badge -->
+            <rect x="210" y="150" width="80" height="22" rx="2" fill="#c0392b"/>
+            <text x="250" y="166" font-family="Arial" font-size="11" font-weight="bold" fill="white" text-anchor="middle">CAR CENTER 61</text>
+          </svg>
+        </div>
+        <div class="featured-car-info">
+          <div>
+            <div class="featured-car-name">AKTUELLE ANGEBOTE</div>
+            <div class="featured-car-sub lang-key" data-de="Geprüfte Gebrauchtwagen" data-en="Certified Used Cars" data-tr="Kontrol Edilmiş Araçlar">Geprüfte Gebrauchtwagen</div>
+          </div>
+          <div class="featured-car-price">mobile.de <span class="lang-key" data-de="ansehen" data-en="view" data-tr="gör">ansehen</span></div>
+        </div>
+        <div class="car-tags">
+          <span class="car-tag">TÜV GEPRÜFT</span>
+          <span class="car-tag">FAIRE PREISE</span>
+          <span class="car-tag">FINANZIERUNG</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="section" id="services">
+  <div class="section-header reveal">
+    <div class="section-label lang-key" data-de="Was wir bieten" data-en="What we offer" data-tr="Ne Sunuyoruz">Was wir bieten</div>
+    <h2 class="section-title">
+      <span class="lang-key" data-de="UNSERE" data-en="OUR" data-tr="HİZMETLERİMİZ">UNSERE</span>
+      <em class="lang-key" data-de="LEISTUNGEN" data-en="SERVICES" data-tr=""> LEISTUNGEN</em>
+    </h2>
+  </div>
+  <div class="services-grid">
+    <div class="service-card reveal reveal-delay-1">
+      <div class="service-number">01</div>
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><path d="M19 9V6a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v3m14 0H5m14 0v10a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V9"/><circle cx="8.5" cy="14" r="1"/><circle cx="15.5" cy="14" r="1"/><path d="M8.5 18h7"/></svg>
+      </div>
+      <div class="service-title lang-key" data-de="Fahrzeugverkauf" data-en="Vehicle Sales" data-tr="Araç Satışı">Fahrzeugverkauf</div>
+      <p class="service-desc lang-key"
+        data-de="Sorgfältig ausgewählte Gebrauchtwagen zu fairen Marktpreisen. Transparente Kaufabwicklung, kein versteckter Aufwand."
+        data-en="Carefully selected used vehicles at fair market prices. Transparent purchasing process, no hidden costs."
+        data-tr="Adil piyasa fiyatlarıyla özenle seçilmiş ikinci el araçlar. Şeffaf satın alma süreci, gizli masraf yok.">
+        Sorgfältig ausgewählte Gebrauchtwagen zu fairen Marktpreisen. Transparente Kaufabwicklung, kein versteckter Aufwand.
+      </p>
+    </div>
+    <div class="service-card reveal reveal-delay-2">
+      <div class="service-number">02</div>
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+      </div>
+      <div class="service-title lang-key" data-de="KFZ-Reparatur" data-en="Car Repair" data-tr="Araç Tamiri">KFZ-Reparatur</div>
+      <p class="service-desc lang-key"
+        data-de="Fachkundige Reparaturen für alle Fahrzeugmarken und -modelle. Schnelle Diagnose, zuverlässige Lösungen."
+        data-en="Expert repairs for all vehicle makes and models. Fast diagnosis, reliable solutions."
+        data-tr="Tüm araç marka ve modelleri için uzman onarım. Hızlı teşhis, güvenilir çözümler.">
+        Fachkundige Reparaturen für alle Fahrzeugmarken und -modelle. Schnelle Diagnose, zuverlässige Lösungen.
+      </p>
+    </div>
+    <div class="service-card reveal reveal-delay-3">
+      <div class="service-number">03</div>
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+      </div>
+      <div class="service-title lang-key" data-de="TÜV & HU/AU" data-en="TÜV Inspection" data-tr="TÜV & Muayene">TÜV & HU/AU</div>
+      <p class="service-desc lang-key"
+        data-de="Hauptuntersuchung und Abgasuntersuchung direkt vor Ort. Wir bereiten Ihr Fahrzeug optimal vor."
+        data-en="Main inspection and emissions test on-site. We prepare your vehicle optimally."
+        data-tr="Araç muayenesi ve egzoz testi yerinde yapılır. Aracınızı en iyi şekilde hazırlıyoruz.">
+        Hauptuntersuchung und Abgasuntersuchung direkt vor Ort. Wir bereiten Ihr Fahrzeug optimal vor.
+      </p>
+    </div>
+    <div class="service-card reveal reveal-delay-1">
+      <div class="service-number">04</div>
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+      </div>
+      <div class="service-title lang-key" data-de="Inspektion & Service" data-en="Inspection & Service" data-tr="Bakım & Servis">Inspektion & Service</div>
+      <p class="service-desc lang-key"
+        data-de="Regelmäßige Wartung hält Ihr Fahrzeug in Topform. Ölwechsel, Bremsservice, Filterwechsel und mehr."
+        data-en="Regular maintenance keeps your vehicle in top shape. Oil change, brake service, filter replacement and more."
+        data-tr="Düzenli bakım aracınızı zirve performansta tutar. Yağ değişimi, fren servisi, filtre değişimi ve daha fazlası.">
+        Regelmäßige Wartung hält Ihr Fahrzeug in Topform. Ölwechsel, Bremsservice, Filterwechsel und mehr.
+      </p>
+    </div>
+    <div class="service-card reveal reveal-delay-2">
+      <div class="service-number">05</div>
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13" rx="1"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+      </div>
+      <div class="service-title lang-key" data-de="Fahrzeugankauf" data-en="Vehicle Purchase" data-tr="Araç Alımı">Fahrzeugankauf</div>
+      <p class="service-desc lang-key"
+        data-de="Sie möchten Ihr Auto verkaufen? Wir machen Ihnen ein faires Angebot – schnell, unkompliziert und direkt."
+        data-en="Want to sell your car? We make you a fair offer – fast, uncomplicated and direct."
+        data-tr="Arabanızı satmak mı istiyorsunuz? Size adil bir teklif yapıyoruz – hızlı, kolay ve doğrudan.">
+        Sie möchten Ihr Auto verkaufen? Wir machen Ihnen ein faires Angebot – schnell, unkompliziert und direkt.
+      </p>
+    </div>
+    <div class="service-card reveal reveal-delay-3">
+      <div class="service-number">06</div>
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+      <div class="service-title lang-key" data-de="Garantie & Schutz" data-en="Warranty & Protection" data-tr="Garanti & Koruma">Garantie & Schutz</div>
+      <p class="service-desc lang-key"
+        data-de="Sicherheit beim Fahrzeugkauf. Optionale Garantiepakete für geprüfte Gebrauchtwagen auf Anfrage."
+        data-en="Safety when buying a vehicle. Optional warranty packages for certified used cars on request."
+        data-tr="Araç alımında güvenlik. Kontrol edilmiş ikinci el araçlar için talep üzerine opsiyonel garanti paketleri.">
+        Sicherheit beim Fahrzeugkauf. Optionale Garantiepakete für geprüfte Gebrauchtwagen auf Anfrage.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- FAHRZEUGE -->
+<div class="fahrzeuge-bg" id="fahrzeuge">
+<section class="section">
+  <div class="section-header reveal">
+    <div class="section-label lang-key" data-de="Unser Bestand" data-en="Our Stock" data-tr="Stoğumuz">Unser Bestand</div>
+    <h2 class="section-title">
+      <span class="lang-key" data-de="AKTUELLE" data-en="CURRENT" data-tr="MEVCUT">AKTUELLE </span>
+      <em class="lang-key" data-de="FAHRZEUGE" data-en="VEHICLES" data-tr="ARAÇLAR">FAHRZEUGE</em>
+    </h2>
+  </div>
+
+  <div class="fahrzeuge-grid">
+    <!-- Car 1 -->
+    <div class="fz-card reveal reveal-delay-1">
+      <div class="fz-img">
+        <span class="fz-badge lang-key" data-de="NEU IM BESTAND" data-en="NEW IN STOCK" data-tr="STOKTA YENİ">NEU IM BESTAND</span>
+        <svg class="car-illus" viewBox="0 0 320 140" xmlns="http://www.w3.org/2000/svg">
+          <defs><linearGradient id="g1" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#2a2a2a"/><stop offset="100%" stop-color="#0d0d0d"/></linearGradient></defs>
+          <ellipse cx="160" cy="134" rx="140" ry="6" fill="rgba(0,0,0,0.4)"/>
+          <path d="M35 100 L50 72 L80 55 L120 48 L165 46 L205 50 L240 60 L268 80 L278 100 Z" fill="url(#g1)" stroke="#333" stroke-width="1"/>
+          <path d="M88 72 L108 54 L148 46 L188 47 L218 56 L220 72 Z" fill="#252525" stroke="#2a2a2a"/>
+          <path d="M96 70 L112 54 L148 47 L148 70 Z" fill="#0d2030" opacity="0.85"/>
+          <path d="M188 47 L216 57 L216 70 L188 70 Z" fill="#0d2030" opacity="0.85"/>
+          <rect x="152" y="47" width="32" height="22" fill="#0d2030" opacity="0.75"/>
+          <ellipse cx="75" cy="82" rx="11" ry="7" fill="#c0392b" opacity="0.7" filter="url(#glow)"/>
+          <line x1="52" y1="80" x2="68" y2="80" stroke="#e74c3c" stroke-width="2"/>
+          <ellipse cx="256" cy="82" rx="10" ry="6" fill="#c0392b" opacity="0.8"/>
+          <circle cx="95" cy="115" r="20" fill="#111" stroke="#333" stroke-width="1.5"/>
+          <circle cx="95" cy="115" r="14" fill="#0d0d0d" stroke="#444"/>
+          <circle cx="95" cy="115" r="5" fill="#222"/>
+          <circle cx="225" cy="115" r="20" fill="#111" stroke="#333" stroke-width="1.5"/>
+          <circle cx="225" cy="115" r="14" fill="#0d0d0d" stroke="#444"/>
+          <circle cx="225" cy="115" r="5" fill="#222"/>
+          <line x1="95" y1="99" x2="95" y2="109" stroke="#555" stroke-width="2"/>
+          <line x1="95" y1="121" x2="95" y2="131" stroke="#555" stroke-width="2"/>
+          <line x1="79" y1="115" x2="89" y2="115" stroke="#555" stroke-width="2"/>
+          <line x1="101" y1="115" x2="111" y2="115" stroke="#555" stroke-width="2"/>
+          <line x1="225" y1="99" x2="225" y2="109" stroke="#555" stroke-width="2"/>
+          <line x1="225" y1="121" x2="225" y2="131" stroke="#555" stroke-width="2"/>
+          <line x1="209" y1="115" x2="219" y2="115" stroke="#555" stroke-width="2"/>
+          <line x1="231" y1="115" x2="241" y2="115" stroke="#555" stroke-width="2"/>
+          <line x1="89" y1="46" x2="218" y2="44" stroke="#c0392b" stroke-width="1.5" opacity="0.5"/>
+        </svg>
+      </div>
+      <div class="fz-body">
+        <div class="fz-make">BMW</div>
+        <div class="fz-model">3er Series</div>
+        <div class="fz-specs">
+          <span class="fz-spec"><span class="fz-spec-dot"></span>2019</span>
+          <span class="fz-spec"><span class="fz-spec-dot"></span>85.000 km</span>
+          <span class="fz-spec"><span class="fz-spec-dot"></span>150 PS</span>
+          <span class="fz-spec"><span class="fz-spec-dot"></span>Diesel</span>
+        </div>
+        <div class="fz-footer">
+          <div class="fz-price">18.900 €</div>
+          <a href="tel:+497147220038" class="fz-anfrage lang-key" data-de="Anfragen" data-en="Inquire" data-tr="Bilgi Al">Anfragen</a>
+        </div>
+      </div>
+    </div>
+    <!-- Car 2 -->
+    <div class="fz-card reveal reveal-delay-2">
+      <div class="fz-img">
+        <span class="fz-badge" style="background:#c9a96e; color:#000">TOP ANGEBOT</span>
+        <svg class="car-illus" viewBox="0 0 320 140" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="160" cy="134" rx="140" ry="6" fill="rgba(0,0,0,0.4)"/>
+          <path d="M30 100 L48 68 L85 50 L130 44 L180 43 L220 48 L258 65 L280 95 L282 100 Z" fill="#1e1e1e" stroke="#333"/>
+          <path d="M92 66 L115 48 L160 43 L200 46 L225 58 L226 66 Z" fill="#282828" stroke="#2a2a2a"/>
+          <path d="M98 65 L118 48 L157 43 L157 65 Z" fill="#0d2030" opacity="0.8"/>
+          <rect x="160" y="44" width="40" height="21" fill="#0d2030" opacity="0.75"/>
+          <path d="M202 46 L223 58 L223 65 L202 65 Z" fill="#0d2030" opacity="0.8"/>
+          <ellipse cx="68" cy="78" rx="13" ry="8" fill="#c0392b" opacity="0.6"/>
+          <line x1="46" y1="76" x2="62" y2="76" stroke="#e74c3c" stroke-width="2"/>
+          <ellipse cx="262" cy="80" rx="11" ry="7" fill="#c0392b" opacity="0.8"/>
+          <circle cx="92" cy="115" r="21" fill="#111" stroke="#333" stroke-width="1.5"/>
+          <circle cx="92" cy="115" r="15" fill="#0d0d0d" stroke="#444"/>
+          <circle cx="92" cy="115" r="5" fill="#222"/>
+          <line x1="92" y1="98" x2="92" y2="109" stroke="#555" stroke-width="2"/>
+          <line x1="92" y1="121" x2="92" y2="132" stroke="#555" stroke-width="2"/>
+          <line x1="75" y1="115" x2="86" y2="115" stroke="#555" stroke-width="2"/>
+          <line x1="98" y1="115" x2="109" y2="115" stroke="#555" stroke-width="2"/>
+          <circle cx="228" cy="115" r="21" fill="#111" stroke="#333" stroke-width="1.5"/>
+          <circle cx="228" cy="115" r="15" fill="#0d0d0d" stroke="#444"/>
+          <circle cx="228" cy="115" r="5" fill="#222"/>
+          <line x1="228" y1="98" x2="228" y2="109" stroke="#555" stroke-width="2"/>
+          <line x1="228" y1="121" x2="228" y2="132" stroke="#555" stroke-width="2"/>
+          <line x1="211" y1="115" x2="222" y2="115" stroke="#555" stroke-width="2"/>
+          <line x1="234" y1="115" x2="245" y2="115" stroke="#555" stroke-width="2"/>
+          <line x1="93" y1="43" x2="224" y2="42" stroke="#c9a96e" stroke-width="1.5" opacity="0.5"/>
+        </svg>
+      </div>
+      <div class="fz-body">
+        <div class="fz-make">Mercedes-Benz</div>
+        <div class="fz-model">C 220 d</div>
+        <div class="fz-specs">
+          <span class="fz-spec"><span class="fz-spec-dot"></span>2020</span>
+          <span class="fz-spec"><span class="fz-spec-dot"></span>62.000 km</span>
+          <span class="fz-spec"><span class="fz-spec-dot"></span>194 PS</span>
+          <span class="fz-spec"><span class="fz-spec-dot"></span>Diesel</span>
+        </div>
+        <div class="fz-footer">
+          <div class="fz-price">28.500 €</div>
+          <a href="tel:+497147220038" class="fz-anfrage lang-key" data-de="Anfragen" data-en="Inquire" data-tr="Bilgi Al">Anfragen</a>
+        </div>
+      </div>
+    </div>
+    <!-- Car 3 -->
+    <div class="fz-card reveal reveal-delay-3">
+      <div class="fz-img">
+        <span class="fz-badge lang-key" data-de="TÜV NEU" data-en="NEW TÜV" data-tr="YENİ MUAYENE">TÜV NEU</span>
+        <svg class="car-illus" viewBox="0 0 320 140" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="160" cy="134" rx="140" ry="6" fill="rgba(0,0,0,0.4)"/>
+          <path d="M25 100 L42 75 L72 58 L110 50 L155 47 L200 50 L240 62 L272 85 L280 100 Z" fill="#1a1a1a" stroke="#333"/>
+          <path d="M86 73 L105 57 L145 48 L185 49 L215 60 L218 73 Z" fill="#262626" stroke="#2a2a2a"/>
+          <path d="M92 72 L110 57 L144 48 L144 72 Z" fill="#0d2030" opacity="0.8"/>
+          <rect x="148" y="49" width="34" height="23" fill="#0d2030" opacity="0.75"/>
+          <path d="M184 49 L213 61 L213 72 L184 72 Z" fill="#0d2030" opacity="0.8"/>
+          <ellipse cx="60" cy="83" rx="12" ry="8" fill="#c0392b" opacity="0.65"/>
+          <line x1="38" y1="81" x2="54" y2="81" stroke="#e74c3c" stroke-width="2"/>
+          <ellipse cx="258" cy="85" rx="11" ry="7" fill="#c0392b" opacity="0.8"/>
+          <circle cx="89" cy="114" r="20" fill="#111" stroke="#333" stroke-width="1.5"/>
+          <circle cx="89" cy="114" r="14" fill="#0d0d0d" stroke="#444"/>
+          <circle cx="89" cy="114" r="5" fill="#222"/>
+          <line x1="89" y1="98" x2="89" y2="108" stroke="#555" stroke-width="2"/>
+          <line x1="89" y1="120" x2="89" y2="130" stroke="#555" stroke-width="2"/>
+          <line x1="73" y1="114" x2="83" y2="114" stroke="#555" stroke-width="2"/>
+          <line x1="95" y1="114" x2="105" y2="114" stroke="#555" stroke-width="2"/>
+          <circle cx="226" cy="114" r="20" fill="#111" stroke="#333" stroke-width="1.5"/>
+          <circle cx="226" cy="114" r="14" fill="#0d0d0d" stroke="#444"/>
+          <circle cx="226" cy="114" r="5" fill="#222"/>
+          <line x1="226" y1="98" x2="226" y2="108" stroke="#555" stroke-width="2"/>
+          <line x1="226" y1="120" x2="226" y2="130" stroke="#555" stroke-width="2"/>
+          <line x1="210" y1="114" x2="220" y2="114" stroke="#555" stroke-width="2"/>
+          <line x1="232" y1="114" x2="242" y2="114" stroke="#555" stroke-width="2"/>
+          <line x1="87" y1="47" x2="213" y2="46" stroke="#c0392b" stroke-width="1.5" opacity="0.5"/>
+        </svg>
+      </div>
+      <div class="fz-body">
+        <div class="fz-make">Volkswagen</div>
+        <div class="fz-model">Golf VIII GTI</div>
+        <div class="fz-specs">
+          <span class="fz-spec"><span class="fz-spec-dot"></span>2021</span>
+          <span class="fz-spec"><span class="fz-spec-dot"></span>38.000 km</span>
+          <span class="fz-spec"><span class="fz-spec-dot"></span>245 PS</span>
+          <span class="fz-spec"><span class="fz-spec-dot"></span>Benzin</span>
+        </div>
+        <div class="fz-footer">
+          <div class="fz-price">32.900 €</div>
+          <a href="tel:+497147220038" class="fz-anfrage lang-key" data-de="Anfragen" data-en="Inquire" data-tr="Bilgi Al">Anfragen</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="fahrzeuge-cta reveal">
+    <p style="color:var(--silver); margin-bottom:20px; font-size:14px;" class="lang-key"
+      data-de="Alle aktuellen Fahrzeugangebote finden Sie auf mobile.de"
+      data-en="Find all current vehicle offers on mobile.de"
+      data-tr="Tüm güncel araç tekliflerini mobile.de'de bulabilirsiniz">
+      Alle aktuellen Fahrzeugangebote finden Sie auf mobile.de
+    </p>
+    <a href="https://home.mobile.de/CARCENTER61" target="_blank" rel="noopener" class="btn-primary lang-key"
+      data-de="Alle Fahrzeuge auf mobile.de ansehen"
+      data-en="View all vehicles on mobile.de"
+      data-tr="Tüm araçları mobile.de'de görüntüle">
+      Alle Fahrzeuge auf mobile.de ansehen
+    </a>
+  </div>
+</section>
+</div>
+
+<!-- ÜBER UNS -->
+<section class="section" id="about">
+  <div class="about-grid">
+    <div class="about-visual reveal">
+      <div class="about-main-box">
+        <svg class="workshop-svg" viewBox="0 0 400 280" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="floorGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#1a1a1a"/>
+              <stop offset="100%" stop-color="#0d0d0d"/>
+            </linearGradient>
+          </defs>
+          <!-- Workshop floor -->
+          <rect x="0" y="200" width="400" height="80" fill="url(#floorGrad)"/>
+          <!-- Floor lines -->
+          <line x1="0" y1="240" x2="400" y2="240" stroke="#222" stroke-width="1"/>
+          <line x1="80" y1="200" x2="80" y2="280" stroke="#1a1a1a" stroke-width="1"/>
+          <line x1="160" y1="200" x2="160" y2="280" stroke="#1a1a1a" stroke-width="1"/>
+          <line x1="240" y1="200" x2="240" y2="280" stroke="#1a1a1a" stroke-width="1"/>
+          <line x1="320" y1="200" x2="320" y2="280" stroke="#1a1a1a" stroke-width="1"/>
+          <!-- Car on lift -->
+          <rect x="120" y="175" width="160" height="25" rx="2" fill="#333" stroke="#444"/>
+          <!-- Car body -->
+          <path d="M100 150 L120 125 L155 112 L200 108 L245 112 L280 125 L300 150 Z" fill="#222" stroke="#333"/>
+          <path d="M138 127 L158 112 L197 108 L240 112 L264 126 L262 140 L138 140 Z" fill="#1a2a38" opacity="0.9"/>
+          <!-- Window highlight -->
+          <path d="M144 126 L160 112 L196 108 L196 126 Z" fill="#1e3a5a" opacity="0.7"/>
+          <rect x="200" y="109" width="38" height="17" fill="#1e3a5a" opacity="0.7"/>
+          <!-- Lift posts -->
+          <rect x="118" y="100" width="8" height="100" fill="#2a2a2a" stroke="#333"/>
+          <rect x="274" y="100" width="8" height="100" fill="#2a2a2a" stroke="#333"/>
+          <!-- Lift base -->
+          <rect x="108" y="195" width="28" height="8" fill="#333"/>
+          <rect x="264" y="195" width="28" height="8" fill="#333"/>
+          <!-- Mechanic figure -->
+          <circle cx="340" cy="135" r="14" fill="#222" stroke="#444"/>
+          <rect x="330" y="150" width="20" height="40" rx="4" fill="#1a1a1a" stroke="#333"/>
+          <!-- Wrench -->
+          <line x1="315" y1="160" x2="330" y2="155" stroke="#c0392b" stroke-width="3" stroke-linecap="round"/>
+          <circle cx="314" cy="162" r="4" fill="#c0392b" stroke="#e74c3c"/>
+          <!-- Tool cabinet -->
+          <rect x="350" y="130" width="40" height="70" rx="2" fill="#1a1a1a" stroke="#333"/>
+          <rect x="354" y="136" width="32" height="18" rx="1" fill="#222" stroke="#333"/>
+          <rect x="354" y="160" width="32" height="18" rx="1" fill="#222" stroke="#333"/>
+          <rect x="354" y="184" width="32" height="12" rx="1" fill="#222" stroke="#333"/>
+          <circle cx="370" cy="145" r="2" fill="#c0392b"/>
+          <circle cx="370" cy="169" r="2" fill="#c0392b"/>
+          <!-- Overhead lamp -->
+          <rect x="160" y="60" width="80" height="6" rx="2" fill="#333"/>
+          <rect x="170" y="66" width="60" height="10" rx="2" fill="#2a2a2a"/>
+          <ellipse cx="200" cy="76" rx="40" ry="5" fill="rgba(255,255,150,0.04)"/>
+          <line x1="200" y1="0" x2="200" y2="60" stroke="#2a2a2a" stroke-width="2"/>
+          <!-- Red accent light -->
+          <rect x="0" y="260" width="400" height="3" fill="rgba(192,57,43,0.3)"/>
+          <text x="200" y="272" font-family="'Bebas Neue',Arial" font-size="10" fill="#c0392b" text-anchor="middle" letter-spacing="3" opacity="0.6">KFZ WERKSTATT · SACHSENHEIM</text>
+        </svg>
+      </div>
+      <div class="about-accent-box">
+        <div class="about-accent-num">15+</div>
+        <div class="about-accent-text lang-key" data-de="Jahre Erfahrung" data-en="Years Experience" data-tr="Yıl Deneyim">Jahre Erfahrung</div>
+      </div>
+    </div>
+    <div class="about-text reveal reveal-delay-2">
+      <div class="section-label lang-key" data-de="Wer wir sind" data-en="Who we are" data-tr="Kimiz">Wer wir sind</div>
+      <h2 class="section-title" style="margin-bottom:24px;">
+        <span class="lang-key" data-de="IHR PARTNER IN" data-en="YOUR PARTNER IN" data-tr="SAKSENHAİM'DA">IHR PARTNER IN </span>
+        <em>SACHSENHEIM</em>
+      </h2>
+      <p class="about-body lang-key"
+        data-de="Seit über 15 Jahren sind wir Ihr zuverlässiger Ansprechpartner rund ums Fahrzeug im Gewerbegebiet Holderbüschle in Sachsenheim. Unser Team bietet Ihnen persönliche Beratung, faire Preise und transparente Abwicklung – ob beim Kauf, Verkauf oder Service."
+        data-en="For over 15 years, we have been your reliable partner for all vehicle needs in the Holderbüschle industrial area in Sachsenheim. Our team offers personal consultation, fair prices and transparent handling – whether buying, selling or servicing."
+        data-tr="15 yılı aşkın süredir Sachsenheim'daki Holderbüschle sanayi bölgesinde araçlarınız için güvenilir partneriniziz. Ekibimiz; satın alma, satış veya servis konularında kişisel danışmanlık, adil fiyatlar ve şeffaf işlem sunmaktadır.">
+        Seit über 15 Jahren sind wir Ihr zuverlässiger Ansprechpartner rund ums Fahrzeug im Gewerbegebiet Holderbüschle in Sachsenheim. Unser Team bietet Ihnen persönliche Beratung, faire Preise und transparente Abwicklung – ob beim Kauf, Verkauf oder Service.
+      </p>
+      <div class="about-features">
+        <div class="about-feature lang-key" data-de="Faire & transparente Preise" data-en="Fair & transparent prices" data-tr="Adil ve şeffaf fiyatlar">Faire & transparente Preise</div>
+        <div class="about-feature lang-key" data-de="Alle Marken & Modelle" data-en="All makes & models" data-tr="Tüm marka ve modeller">Alle Marken & Modelle</div>
+        <div class="about-feature lang-key" data-de="TÜV-Vorbereitung" data-en="TÜV preparation" data-tr="TÜV hazırlığı">TÜV-Vorbereitung</div>
+        <div class="about-feature lang-key" data-de="Schnelle Reparaturen" data-en="Fast repairs" data-tr="Hızlı onarımlar">Schnelle Reparaturen</div>
+        <div class="about-feature lang-key" data-de="Finanzierungsoptionen" data-en="Financing options" data-tr="Finansman seçenekleri">Finanzierungsoptionen</div>
+        <div class="about-feature lang-key" data-de="Fahrzeug-Ankauf" data-en="Vehicle purchase" data-tr="Araç alımı">Fahrzeug-Ankauf</div>
+      </div>
+      <a href="#kontakt" class="btn-primary lang-key" data-de="Termin vereinbaren" data-en="Book appointment" data-tr="Randevu Al">Termin vereinbaren</a>
+    </div>
+  </div>
+</section>
+
+<!-- BEWERTUNGEN -->
+<div class="reviews-bg">
+<section class="section" id="reviews" style="padding-bottom:80px;">
+  <div class="section-header reveal" style="margin-bottom:48px;">
+    <div class="section-label lang-key" data-de="Was Kunden sagen" data-en="What customers say" data-tr="Müşteriler Ne Diyor">Was Kunden sagen</div>
+    <h2 class="section-title">
+      <span class="lang-key" data-de="KUNDEN" data-en="CUSTOMER" data-tr="MÜŞTERİ">KUNDEN</span>
+      <em class="lang-key" data-de="BEWERTUNGEN" data-en="REVIEWS" data-tr=" DEĞERLENDİRMELERİ"> BEWERTUNGEN</em>
+    </h2>
+  </div>
+  <div class="reviews-grid">
+    <div class="review-card reveal reveal-delay-1">
+      <div class="review-quote">"</div>
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text lang-key"
+        data-de="Ausgezeichneter Service und sehr kompetente Mitarbeiter! Das Auto läuft einwandfrei, fairer Preis und schnelle Abwicklung."
+        data-en="Excellent service and very competent staff! The car runs perfectly, fair price and quick handling."
+        data-tr="Mükemmel hizmet ve çok yetkin personel! Araba kusursuz çalışıyor, adil fiyat ve hızlı işlem.">
+        Ausgezeichneter Service und sehr kompetente Mitarbeiter! Das Auto läuft einwandfrei, fairer Preis und schnelle Abwicklung.
+      </p>
+      <div class="review-author">Max M.</div>
+      <div class="review-platform">Google · 2024</div>
+    </div>
+    <div class="review-card reveal reveal-delay-2">
+      <div class="review-quote">"</div>
+      <div class="review-stars">★★★★☆</div>
+      <p class="review-text lang-key"
+        data-de="Sehr freundliches Team, gute Beratung beim Autokauf. Preis-Leistungs-Verhältnis stimmt. Gerne wieder!"
+        data-en="Very friendly team, good advice when buying a car. Good value for money. Definitely again!"
+        data-tr="Çok dost canlısı ekip, araba alımında iyi tavsiye. Fiyat-performans oranı doğru. Kesinlikle tekrar!">
+        Sehr freundliches Team, gute Beratung beim Autokauf. Preis-Leistungs-Verhältnis stimmt. Gerne wieder!
+      </p>
+      <div class="review-author">Sandra K.</div>
+      <div class="review-platform">Google · 2024</div>
+    </div>
+    <div class="review-card reveal reveal-delay-3">
+      <div class="review-quote">"</div>
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text lang-key"
+        data-de="TÜV-Vorbereitung und Reparatur in kurzer Zeit erledigt. Sehr professionell, transparente Preise. Kann ich nur empfehlen."
+        data-en="TÜV preparation and repair done in a short time. Very professional, transparent prices. Can only recommend."
+        data-tr="TÜV hazırlığı ve onarım kısa sürede tamamlandı. Çok profesyonel, şeffaf fiyatlar. Kesinlikle tavsiye ederim.">
+        TÜV-Vorbereitung und Reparatur in kurzer Zeit erledigt. Sehr professionell, transparente Preise. Kann ich nur empfehlen.
+      </p>
+      <div class="review-author">Ahmed B.</div>
+      <div class="review-platform">Google · 2023</div>
+    </div>
+  </div>
+  <div style="text-align:center; margin-top:32px;" class="reveal">
+    <a href="https://g.page/r/car-center-61/review" target="_blank" rel="noopener" class="btn-outline lang-key"
+      data-de="Alle 28 Bewertungen lesen"
+      data-en="Read all 28 reviews"
+      data-tr="28 değerlendirmenin tamamını oku">
+      Alle 28 Bewertungen lesen
+    </a>
+  </div>
+</section>
+</div>
+
+<!-- KONTAKT & MAPS -->
+<section class="section" id="kontakt">
+  <div class="section-header reveal" style="margin-bottom:48px;">
+    <div class="section-label lang-key" data-de="So finden Sie uns" data-en="How to find us" data-tr="Bizi Nasıl Bulursunuz">So finden Sie uns</div>
+    <h2 class="section-title">
+      <span class="lang-key" data-de="KONTAKT &" data-en="CONTACT &" data-tr="İLETİŞİM &">KONTAKT & </span>
+      <em class="lang-key" data-de="ANFAHRT" data-en="DIRECTIONS" data-tr="YOL TARİFİ">ANFAHRT</em>
+    </h2>
+  </div>
+  <div class="kontakt-grid reveal">
+    <div class="kontakt-info">
+      <div class="kontakt-item">
+        <div class="kontakt-icon">
+          <svg viewBox="0 0 24 24"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+        </div>
+        <div>
+          <div class="kontakt-label lang-key" data-de="Adresse" data-en="Address" data-tr="Adres">Adresse</div>
+          <div class="kontakt-value">Bertha-Benz-Straße 7<br>74343 Sachsenheim<br><small style="color:var(--silver)">Gewerbegebiet Holderbüschle</small></div>
+        </div>
+      </div>
+      <div class="kontakt-item">
+        <div class="kontakt-icon">
+          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.66A2 2 0 012 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.61a16 16 0 006.29 6.29l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        </div>
+        <div>
+          <div class="kontakt-label lang-key" data-de="Telefon" data-en="Phone" data-tr="Telefon">Telefon</div>
+          <div class="kontakt-value"><a href="tel:+497147220038">07147 220038</a></div>
+        </div>
+      </div>
+      <div class="kontakt-item">
+        <div class="kontakt-icon">
+          <svg viewBox="0 0 24 24"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+        </div>
+        <div>
+          <div class="kontakt-label">E-Mail</div>
+          <div class="kontakt-value"><a href="mailto:info@carcenter61.de">info@carcenter61.de</a></div>
+        </div>
+      </div>
+      <div class="kontakt-item">
+        <div class="kontakt-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <div>
+          <div class="kontakt-label lang-key" data-de="Öffnungszeiten" data-en="Opening Hours" data-tr="Çalışma Saatleri">Öffnungszeiten</div>
+          <div class="kontakt-value" id="openHours">Mo–Fr: 09:00–18:00<br><span id="openStatus" style="font-size:12px;"></span></div>
+        </div>
+      </div>
+      <div style="margin-top:28px;">
+        <a href="https://wa.me/497147220038" target="_blank" rel="noopener" class="btn-primary" style="display:inline-flex; align-items:center; gap:10px;">
+          <svg width="18" height="18" fill="white" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.126 1.532 5.862L.057 23.5l5.782-1.513A11.93 11.93 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.894c-1.97 0-3.81-.538-5.39-1.472l-.385-.229-3.994 1.046 1.065-3.892-.25-.4A9.887 9.887 0 012.106 12c0-5.45 4.444-9.894 9.894-9.894 5.449 0 9.893 4.444 9.893 9.894S17.449 21.894 12 21.894z"/></svg>
+          <span class="lang-key" data-de="WhatsApp schreiben" data-en="WhatsApp message" data-tr="WhatsApp Yaz">WhatsApp schreiben</span>
+        </a>
+      </div>
+    </div>
+    <div class="map-container">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2617.6!2d9.01!3d48.96!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4799c7a9d0000001%3A0x1!2sBertha-Benz-Stra%C3%9Fe+7%2C+74343+Sachsenheim!5e0!3m2!1sde!2sde!4v1"
+        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+      <div class="map-overlay">
+        <div class="map-overlay-title">CAR CENTER 61</div>
+        <div class="map-overlay-addr">Bertha-Benz-Str. 7, 74343 Sachsenheim</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="#" class="logo">
+          <div class="logo-icon">
+            <svg viewBox="0 0 24 24" fill="white"><path d="M5 17H3a2 2 0 01-2-2V5a2 2 0 012-2h11a2 2 0 012 2v3"/></svg>
+          </div>
+          CAR CENTER <span>61</span>
+        </a>
+        <p class="footer-desc lang-key"
+          data-de="Ihr Spezialist für Gebrauchtwagen, Reparatur und KFZ-Service in Sachsenheim seit über 15 Jahren."
+          data-en="Your specialist for used cars, repairs and KFZ service in Sachsenheim for over 15 years."
+          data-tr="15 yılı aşkın süredir Sachsenheim'da ikinci el araçlar, onarım ve araç hizmetleri konusunda uzmanınız.">
+          Ihr Spezialist für Gebrauchtwagen, Reparatur und KFZ-Service in Sachsenheim seit über 15 Jahren.
+        </p>
+      </div>
+      <div>
+        <div class="footer-title lang-key" data-de="Leistungen" data-en="Services" data-tr="Hizmetler">Leistungen</div>
+        <ul class="footer-links">
+          <li><a href="#services" class="lang-key" data-de="Fahrzeugverkauf" data-en="Vehicle Sales" data-tr="Araç Satışı">Fahrzeugverkauf</a></li>
+          <li><a href="#services" class="lang-key" data-de="KFZ-Reparatur" data-en="Car Repair" data-tr="Araç Tamiri">KFZ-Reparatur</a></li>
+          <li><a href="#services" class="lang-key" data-de="TÜV & HU/AU" data-en="TÜV Inspection" data-tr="TÜV & Muayene">TÜV & HU/AU</a></li>
+          <li><a href="#services" class="lang-key" data-de="Fahrzeugankauf" data-en="Vehicle Purchase" data-tr="Araç Alımı">Fahrzeugankauf</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-title lang-key" data-de="Kontakt" data-en="Contact" data-tr="İletişim">Kontakt</div>
+        <ul class="footer-links">
+          <li><a href="tel:+497147220038">07147 220038</a></li>
+          <li><a href="mailto:info@carcenter61.de">info@carcenter61.de</a></li>
+          <li><a href="https://home.mobile.de/CARCENTER61" target="_blank" rel="noopener">mobile.de Angebote</a></li>
+          <li><a href="#kontakt" class="lang-key" data-de="Anfahrt" data-en="Directions" data-tr="Yol Tarifi">Anfahrt</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2025 Car Center 61 · Bertha-Benz-Straße 7, 74343 Sachsenheim</div>
+      <div style="display:flex; gap:20px;">
+        <a href="#impressum" style="color:rgba(255,255,255,0.3); text-decoration:none; font-size:12px;" class="lang-key" data-de="Impressum" data-en="Imprint" data-tr="Künye">Impressum</a>
+        <a href="#datenschutz" style="color:rgba(255,255,255,0.3); text-decoration:none; font-size:12px;" class="lang-key" data-de="Datenschutz" data-en="Privacy" data-tr="Gizlilik">Datenschutz</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- WHATSAPP FLOAT -->
+<div class="whatsapp-float">
+  <div class="wa-tooltip lang-key" data-de="Jetzt auf WhatsApp schreiben" data-en="Chat on WhatsApp now" data-tr="WhatsApp'ta yaz">Jetzt auf WhatsApp schreiben</div>
+  <a class="wa-btn" href="https://wa.me/497147220038?text=Hallo%20Car%20Center%2061%2C%20ich%20interessiere%20mich%20f%C3%BCr%20ein%20Fahrzeug." target="_blank" rel="noopener" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zm-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884zm8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+</div>
+
+<!-- IMPRESSUM PLACEHOLDER -->
+<div id="impressum" style="display:none"></div>
+<div id="datenschutz" style="display:none"></div>
+
+<script>
+  // Language system
+  let currentLang = 'de';
+  function setLang(lang) {
+    currentLang = lang;
+    document.querySelectorAll('.lang-bar button').forEach(b => b.classList.remove('active'));
+    document.querySelector(`.lang-bar button:nth-child(${lang==='de'?1:lang==='en'?2:3})`).classList.add('active');
+    document.querySelectorAll('.lang-key').forEach(el => {
+      const val = el.dataset[lang];
+      if (val !== undefined) el.textContent = val;
+    });
+    document.documentElement.lang = lang;
+    updateOpenStatus();
+  }
+
+  // Opening hours status
+  function updateOpenStatus() {
+    const el = document.getElementById('openStatus');
+    if (!el) return;
+    const now = new Date();
+    const day = now.getDay(); // 0=Sun, 1=Mon, 5=Fri, 6=Sat
+    const hour = now.getHours();
+    const isOpen = day >= 1 && day <= 5 && hour >= 9 && hour < 18;
+    const texts = {
+      de: isOpen ? '🟢 Jetzt geöffnet' : '🔴 Aktuell geschlossen',
+      en: isOpen ? '🟢 Currently open' : '🔴 Currently closed',
+      tr: isOpen ? '🟢 Şu an açık' : '🔴 Şu an kapalı'
+    };
+    el.textContent = texts[currentLang] || texts.de;
+    el.style.color = isOpen ? '#2ecc71' : '#e74c3c';
+  }
+  updateOpenStatus();
+
+  // Navbar scroll
+  window.addEventListener('scroll', () => {
+    document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
+  });
+
+  // Mobile menu
+  function openMenu() { document.getElementById('mobileMenu').classList.add('open'); }
+  function closeMenu() { document.getElementById('mobileMenu').classList.remove('open'); }
+
+  // Scroll reveal
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
