@@ -1763,8 +1763,17 @@
   }
 
   function carCardHTML(c, linkUrl, badgeLabel) {
+    // Anfragen button action
+    const isPhone = linkUrl.startsWith('tel:');
+    const isExternal = linkUrl.startsWith('http');
+    const btnHref = linkUrl;
+    const btnTarget = isExternal ? 'target="_blank" rel="noopener"' : '';
+    const btnLabel = badgeLabel
+      ? `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>${badgeLabel}`
+      : `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.66A2 2 0 012 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.61a16 16 0 006.29 6.29l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>Anfragen`;
+
     return `
-      <a href="${linkUrl}" ${linkUrl !== '#' ? 'target="_blank" rel="noopener"' : ''} style="text-decoration:none;display:block;" class="fz-card">
+      <div class="fz-card">
         <div class="fz-img" style="position:relative;overflow:hidden;aspect-ratio:16/10;background:#111;">
           ${c.badge ? `<span class="fz-badge" style="${c.badgeColor?'background:'+c.badgeColor+';color:#000':''}">${c.badge}</span>` : ''}
           ${badgeLabel ? `<span style="position:absolute;bottom:10px;right:10px;background:rgba(8,8,8,0.85);border:1px solid rgba(192,57,43,0.5);color:var(--red-bright);font-family:'Rajdhani',sans-serif;font-size:10px;font-weight:700;letter-spacing:1px;padding:3px 9px;z-index:2;">${badgeLabel}</span>` : ''}
@@ -1781,12 +1790,12 @@
           </div>
           <div class="fz-footer">
             <div class="fz-price">${Number(c.price).toLocaleString('de-DE')} €</div>
-            <span class="fz-anfrage" style="display:inline-flex;align-items:center;gap:6px;">
-              ${badgeLabel ? `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>${badgeLabel}` : 'Anfragen'}
-            </span>
+            <a href="${btnHref}" ${btnTarget} class="fz-anfrage" style="display:inline-flex;align-items:center;gap:6px;text-decoration:none;">
+              ${btnLabel}
+            </a>
           </div>
         </div>
-      </a>`;
+      </div>`;
   }
 
   function renderCars() {
