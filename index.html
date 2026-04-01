@@ -1773,23 +1773,27 @@
   }
 
   function carCardHTML(c, linkUrl, badgeLabel) {
-    // Anfragen button action
-    const isPhone = linkUrl.startsWith('tel:');
     const isExternal = linkUrl.startsWith('http');
-    const btnHref = isExternal ? linkUrl : ('/araba.html?id=' + c.id);
+    const detailUrl = '/araba.html?id=' + c.id;
+
+    // Image click — local: detay sayfası, external: platform linki
+    const imgOnclick = isExternal
+      ? `window.open('${linkUrl}','_blank','noopener,noreferrer')`
+      : `window.location.href='${detailUrl}'`;
+
+    // Button
+    const btnHref   = isExternal ? linkUrl : detailUrl;
     const btnTarget = isExternal ? 'target="_blank" rel="noopener"' : '';
-    const btnLabel = badgeLabel
+    const btnLabel  = badgeLabel
       ? `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>${badgeLabel}`
       : `Details ansehen →`;
 
     return `
-      <div class="fz-card">
+      <div class="fz-card" style="cursor:pointer;" onclick="window.location.href='${isExternal ? linkUrl : detailUrl}'" >
         <div class="fz-img" style="position:relative;overflow:hidden;aspect-ratio:16/10;background:#111;">
-          ${c.badge ? `<span class="fz-badge" style="${c.badgeColor?'background:'+c.badgeColor+';color:#000':''}">${c.badge}</span>` : ''}
+          ${c.badge ? `<span class="fz-badge" style="${c.badgeColor ? 'background:' + c.badgeColor + ';color:#000' : ''}">${c.badge}</span>` : ''}
           ${badgeLabel ? `<span style="position:absolute;bottom:10px;right:10px;background:rgba(8,8,8,0.85);border:1px solid rgba(192,57,43,0.5);color:var(--red-bright);font-family:'Rajdhani',sans-serif;font-size:10px;font-weight:700;letter-spacing:1px;padding:3px 9px;z-index:2;">${badgeLabel}</span>` : ''}
-          <img src="${c.img}" alt="${c.make} ${c.model}"
-            style="width:100%;height:100%;object-fit:cover;display:block;cursor:pointer;"
-            onclick="cardImgClick(event, ${c.id}, ${isExternal}, '${btnHref}')">
+          <img src="${c.img}" alt="${c.make} ${c.model}" style="width:100%;height:100%;object-fit:cover;display:block;pointer-events:none;">
         </div>
         <div class="fz-body">
           <div class="fz-make">${c.make}</div>
@@ -1800,11 +1804,9 @@
             <span class="fz-spec"><span class="fz-spec-dot"></span>${c.ps} PS</span>
             <span class="fz-spec"><span class="fz-spec-dot"></span>${c.fuel}</span>
           </div>
-          <div class="fz-footer">
+          <div class="fz-footer" style="pointer-events:none;">
             <div class="fz-price">${Number(c.price).toLocaleString('de-DE')} €</div>
-            <a href="${btnHref}" ${btnTarget} class="fz-anfrage" style="display:inline-flex;align-items:center;gap:6px;text-decoration:none;">
-              ${btnLabel}
-            </a>
+            <span class="fz-anfrage" style="display:inline-flex;align-items:center;gap:6px;">${btnLabel}</span>
           </div>
         </div>
       </div>`;
