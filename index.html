@@ -1739,38 +1739,54 @@
   // ── TAB SYSTEM ──
   function showTab(name) {
     ['local','mobilede','autoscout'].forEach(t => {
-      document.getElementById('panel-' + t).style.display = t === name ? 'block' : 'none';
-      document.getElementById('tab-' + t).classList.toggle('active', t === name);
+      const panel = document.getElementById('panel-' + t);
+      if (panel) panel.style.display = t === name ? 'block' : 'none';
+      const tab = document.getElementById('tab-' + t);
+      if (tab) tab.classList.toggle('active', t === name);
     });
+    if (name === 'mobilede') renderMdecards();
+    if (name === 'autoscout') renderAs24cards();
   }
 
-  // ── LOCAL VEHICLES (from admin panel via localStorage) ──
+  // ── LOCAL VEHICLES ──
   const DEFAULT_CARS = [
-    {
-      id: 1,
-      make: 'BMW', model: '3er Series', year: '2019', km: '85.000', ps: '150',
-      fuel: 'Diesel', price: '18.900', badge: 'NEU IM BESTAND', badgeColor: '',
-      img: 'https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&w=700&q=80'
-    },
-    {
-      id: 2,
-      make: 'Mercedes-Benz', model: 'C 220 d', year: '2020', km: '62.000', ps: '194',
-      fuel: 'Diesel', price: '28.500', badge: 'TOP ANGEBOT', badgeColor: '#c9a96e',
-      img: 'https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&w=700&q=80'
-    },
-    {
-      id: 3,
-      make: 'Volkswagen', model: 'Golf VIII GTI', year: '2021', km: '38.000', ps: '245',
-      fuel: 'Benzin', price: '32.900', badge: 'TÜV NEU', badgeColor: '',
-      img: 'https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&w=700&q=80'
-    }
+    { id:1, make:'BMW', model:'3er Series', year:'2019', km:'85.000', ps:'150', fuel:'Diesel', price:'18900', badge:'NEU IM BESTAND', badgeColor:'', img:'https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&w=700&q=80' },
+    { id:2, make:'Mercedes-Benz', model:'C 220 d', year:'2020', km:'62.000', ps:'194', fuel:'Diesel', price:'28500', badge:'TOP ANGEBOT', badgeColor:'#c9a96e', img:'https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&w=700&q=80' },
+    { id:3, make:'Volkswagen', model:'Golf VIII GTI', year:'2021', km:'38.000', ps:'245', fuel:'Benzin', price:'32900', badge:'TÜV NEU', badgeColor:'', img:'https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&w=700&q=80' }
   ];
 
   function loadCars() {
     try {
-      const stored = localStorage.getItem('cc61_cars');
-      return stored ? JSON.parse(stored) : DEFAULT_CARS;
+      const s = localStorage.getItem('cc61_cars');
+      return s ? JSON.parse(s) : DEFAULT_CARS;
     } catch(e) { return DEFAULT_CARS; }
+  }
+
+  function carCardHTML(c, linkUrl, badgeLabel) {
+    return `
+      <a href="${linkUrl}" ${linkUrl !== '#' ? 'target="_blank" rel="noopener"' : ''} style="text-decoration:none;display:block;" class="fz-card">
+        <div class="fz-img" style="position:relative;overflow:hidden;aspect-ratio:16/10;background:#111;">
+          ${c.badge ? `<span class="fz-badge" style="${c.badgeColor?'background:'+c.badgeColor+';color:#000':''}">${c.badge}</span>` : ''}
+          ${badgeLabel ? `<span style="position:absolute;bottom:10px;right:10px;background:rgba(8,8,8,0.85);border:1px solid rgba(192,57,43,0.5);color:var(--red-bright);font-family:'Rajdhani',sans-serif;font-size:10px;font-weight:700;letter-spacing:1px;padding:3px 9px;z-index:2;">${badgeLabel}</span>` : ''}
+          <img src="${c.img}" alt="${c.make} ${c.model}" style="width:100%;height:100%;object-fit:cover;display:block;">
+        </div>
+        <div class="fz-body">
+          <div class="fz-make">${c.make}</div>
+          <div class="fz-model">${c.model}</div>
+          <div class="fz-specs">
+            <span class="fz-spec"><span class="fz-spec-dot"></span>${c.year}</span>
+            <span class="fz-spec"><span class="fz-spec-dot"></span>${c.km} km</span>
+            <span class="fz-spec"><span class="fz-spec-dot"></span>${c.ps} PS</span>
+            <span class="fz-spec"><span class="fz-spec-dot"></span>${c.fuel}</span>
+          </div>
+          <div class="fz-footer">
+            <div class="fz-price">${Number(c.price).toLocaleString('de-DE')} €</div>
+            <span class="fz-anfrage" style="display:inline-flex;align-items:center;gap:6px;">
+              ${badgeLabel ? `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>${badgeLabel}` : 'Anfragen'}
+            </span>
+          </div>
+        </div>
+      </a>`;
   }
 
   function renderCars() {
@@ -1778,128 +1794,40 @@
     const grid = document.getElementById('fz-grid');
     const empty = document.getElementById('fz-empty');
     if (!cars.length) {
-      grid.style.display = 'none';
-      empty.style.display = 'block';
+      if (grid) grid.style.display = 'none';
+      if (empty) empty.style.display = 'block';
       return;
     }
-    grid.style.display = 'grid';
-    empty.style.display = 'none';
-    grid.innerHTML = cars.map(c => `
-      <div class="fz-card reveal">
-        <div class="fz-img" style="position:relative;overflow:hidden;aspect-ratio:16/10;background:#111;">
-          ${c.badge ? `<span class="fz-badge" style="${c.badgeColor ? 'background:'+c.badgeColor+';color:#000' : ''}">${c.badge}</span>` : ''}
-          <img src="${c.img}" alt="${c.make} ${c.model}"
-            style="width:100%;height:100%;object-fit:cover;object-position:center;display:block;">
-        </div>
-        <div class="fz-body">
-          <div class="fz-make">${c.make}</div>
-          <div class="fz-model">${c.model}</div>
-          <div class="fz-specs">
-            <span class="fz-spec"><span class="fz-spec-dot"></span>${c.year}</span>
-            <span class="fz-spec"><span class="fz-spec-dot"></span>${c.km} km</span>
-            <span class="fz-spec"><span class="fz-spec-dot"></span>${c.ps} PS</span>
-            <span class="fz-spec"><span class="fz-spec-dot"></span>${c.fuel}</span>
-          </div>
-          <div class="fz-footer">
-            <div class="fz-price">${Number(c.price.replace('.','').replace(',','.')).toLocaleString('de-DE')} €</div>
-            <a href="tel:+497147220038" class="fz-anfrage">Anfragen</a>
-          </div>
-        </div>
-      </div>
-    `).join('');
-    // re-observe new cards
-    document.querySelectorAll('.fz-card.reveal').forEach(el => observer.observe(el));
+    if (grid) grid.style.display = 'grid';
+    if (empty) empty.style.display = 'none';
+    if (grid) {
+      grid.innerHTML = cars.map(c => carCardHTML(c, 'tel:+497147220038', '')).join('');
+      grid.querySelectorAll('.fz-card').forEach(el => observer.observe(el));
+    }
   }
 
-  renderCars();
-
-
-  // ── MOBILE.DE CARDS (mirrors local cars with mobile.de link) ──
   function renderMdecards() {
     const cars = loadCars();
     const grid = document.getElementById('mde-cards');
     const counter = document.getElementById('mde-count');
     if (counter) counter.textContent = cars.length;
     if (!grid) return;
-    if (!cars.length) { grid.innerHTML = ''; return; }
-    grid.innerHTML = cars.map(c => `
-      <a href="https://home.mobile.de/CARCENTER61" target="_blank" rel="noopener"
-        style="text-decoration:none;display:block;" class="fz-card">
-        <div class="fz-img" style="position:relative;overflow:hidden;aspect-ratio:16/10;background:#111;">
-          ${c.badge ? `<span class="fz-badge" style="${c.badgeColor?'background:'+c.badgeColor+';color:#000':''}">${c.badge}</span>` : ''}
-          <span style="position:absolute;bottom:10px;right:10px;background:rgba(8,8,8,0.85);border:1px solid rgba(192,57,43,0.5);color:var(--red-bright);font-family:'Rajdhani',sans-serif;font-size:10px;font-weight:700;letter-spacing:1px;padding:3px 9px;z-index:2;">mobile.de ↗</span>
-          <img src="${c.img}" alt="${c.make} ${c.model}"
-            style="width:100%;height:100%;object-fit:cover;object-position:center;display:block;">
-        </div>
-        <div class="fz-body">
-          <div class="fz-make">${c.make}</div>
-          <div class="fz-model">${c.model}</div>
-          <div class="fz-specs">
-            <span class="fz-spec"><span class="fz-spec-dot"></span>${c.year}</span>
-            <span class="fz-spec"><span class="fz-spec-dot"></span>${c.km} km</span>
-            <span class="fz-spec"><span class="fz-spec-dot"></span>${c.ps} PS</span>
-            <span class="fz-spec"><span class="fz-spec-dot"></span>${c.fuel}</span>
-          </div>
-          <div class="fz-footer">
-            <div class="fz-price">${Number(c.price).toLocaleString('de-DE')} €</div>
-            <span class="fz-anfrage" style="display:inline-flex;align-items:center;gap:6px;">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>
-              mobile.de
-            </span>
-          </div>
-        </div>
-      </a>
-    `).join('');
-    document.querySelectorAll('#mde-cards .fz-card').forEach(el => observer.observe(el));
+    grid.innerHTML = cars.map(c => carCardHTML(c, 'https://home.mobile.de/CARCENTER61', 'mobile.de ↗')).join('');
+    grid.querySelectorAll('.fz-card').forEach(el => observer.observe(el));
   }
 
-  // ── AUTOSCOUT24 CARDS ──
   function renderAs24cards() {
     const cars = loadCars();
     const grid = document.getElementById('as24-cards');
     const counter = document.getElementById('as24-count');
     if (counter) counter.textContent = cars.length;
     if (!grid) return;
-    if (!cars.length) { grid.innerHTML = ''; return; }
-    const AS24_URL = 'https://www.autoscout24.de/haendler/car-center-61-sachsenheim-74343-1';
-    grid.innerHTML = cars.map(c => `
-      <a href="${AS24_URL}" target="_blank" rel="noopener"
-        style="text-decoration:none;display:block;" class="fz-card">
-        <div class="fz-img" style="position:relative;overflow:hidden;aspect-ratio:16/10;background:#111;">
-          ${c.badge ? `<span class="fz-badge" style="${c.badgeColor?'background:'+c.badgeColor+';color:#000':''}">${c.badge}</span>` : ''}
-          <span style="position:absolute;bottom:10px;right:10px;background:rgba(8,8,8,0.85);border:1px solid rgba(192,57,43,0.5);color:var(--red-bright);font-family:'Rajdhani',sans-serif;font-size:10px;font-weight:700;letter-spacing:1px;padding:3px 9px;z-index:2;">AutoScout24 ↗</span>
-          <img src="${c.img}" alt="${c.make} ${c.model}"
-            style="width:100%;height:100%;object-fit:cover;object-position:center;display:block;">
-        </div>
-        <div class="fz-body">
-          <div class="fz-make">${c.make}</div>
-          <div class="fz-model">${c.model}</div>
-          <div class="fz-specs">
-            <span class="fz-spec"><span class="fz-spec-dot"></span>${c.year}</span>
-            <span class="fz-spec"><span class="fz-spec-dot"></span>${c.km} km</span>
-            <span class="fz-spec"><span class="fz-spec-dot"></span>${c.ps} PS</span>
-            <span class="fz-spec"><span class="fz-spec-dot"></span>${c.fuel}</span>
-          </div>
-          <div class="fz-footer">
-            <div class="fz-price">${Number(c.price).toLocaleString('de-DE')} €</div>
-            <span class="fz-anfrage" style="display:inline-flex;align-items:center;gap:6px;">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>
-              AutoScout24
-            </span>
-          </div>
-        </div>
-      </a>
-    `).join('');
-    document.querySelectorAll('#as24-cards .fz-card').forEach(el => observer.observe(el));
+    const AS24 = 'https://www.autoscout24.de/haendler/car-center-61-sachsenheim-74343-1';
+    grid.innerHTML = cars.map(c => carCardHTML(c, AS24, 'AutoScout24 ↗')).join('');
+    grid.querySelectorAll('.fz-card').forEach(el => observer.observe(el));
   }
 
-  // Hook into showTab
-  const _origShowTab = showTab;
-  function showTab(name) {
-    _origShowTab(name);
-    if (name === 'mobilede') renderMdecards();
-    if (name === 'autoscout') renderAs24cards();
-  }
+  renderCars();
 
 </script>
 </body>
