@@ -1742,7 +1742,7 @@
     if (isExt) {
       window.open(extUrl, '_blank', 'noopener,noreferrer');
     } else {
-      window.location.href = '/araba.html?id=' + carId;
+      window.location.href = '/fahrzeug-' + carId;
     }
   }
 
@@ -1774,7 +1774,7 @@
 
   function carCardHTML(c, linkUrl, badgeLabel) {
     const isExternal = linkUrl.startsWith('http');
-    const detailUrl  = '/araba-' + c.id + '.html';
+    const detailUrl  = '/fahrzeug-' + c.id + '.html';
     const cardUrl    = isExternal ? linkUrl : detailUrl;
     const cardTarget = isExternal ? '_blank' : '_self';
 
