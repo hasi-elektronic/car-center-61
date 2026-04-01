@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin Panel – Car Center 61</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --black: #080808;
+      --deep: #0f0f0f;
+      --surface: #161616;
+      --card: #1c1c1c;
+      --border: rgba(255,255,255,0.08);
+      --red: #c0392b;
+      --red-bright: #e74c3c;
+      --silver: #a8a8a8;
+      --silver-light: #d4d4d4;
+      --white: #f5f5f5;
+      --gold: #c9a96e;
+      --green: #2ecc71;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--black); color: var(--white); font-family: 'Inter', sans-serif; min-height: 100vh; }
+
+    /* ── LOGIN ── */
+    #login-screen {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(ellipse 60% 60% at 50% 40%, rgba(192,57,43,0.08) 0%, transparent 60%);
+    }
+    .login-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--red);
+      padding: 48px 40px;
+      width: 100%;
+      max-width: 380px;
+      text-align: center;
+    }
+    .login-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 28px;
+      letter-spacing: 3px;
+      color: var(--white);
+      margin-bottom: 6px;
+    }
+    .login-logo span { color: var(--red-bright); }
+    .login-sub {
+      font-size: 12px;
+      color: var(--silver);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 36px;
+    }
+    .login-box input {
+      width: 100%;
+      background: var(--deep);
+      border: 1px solid var(--border);
+      color: var(--white);
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 18px;
+      letter-spacing: 4px;
+      padding: 14px 16px;
+      text-align: center;
+      margin-bottom: 14px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .login-box input:focus { border-color: var(--red); }
+    .login-box input::placeholder { letter-spacing: 2px; color: #333; font-size: 14px; }
+    .login-btn {
+      width: 100%;
+      background: var(--red);
+      border: none;
+      color: #fff;
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700;
+      font-size: 15px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      padding: 14px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .login-btn:hover { background: var(--red-bright); }
+    .login-error {
+      margin-top: 14px;
+      font-size: 13px;
+      color: var(--red-bright);
+      display: none;
+    }
+
+    /* ── ADMIN PANEL ── */
+    #admin-panel { display: none; }
+
+    .admin-header {
+      background: var(--deep);
+      border-bottom: 1px solid var(--border);
+      padding: 16px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .admin-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 22px;
+      letter-spacing: 2px;
+      color: var(--white);
+    }
+    .admin-logo span { color: var(--red-bright); }
+    .admin-logo em { font-style: normal; font-size: 13px; color: var(--silver); margin-left: 12px; font-family: 'Rajdhani', sans-serif; font-weight: 600; letter-spacing: 2px; }
+    .header-actions { display: flex; gap: 10px; align-items: center; }
+    .btn-sm {
+      padding: 8px 18px;
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700;
+      font-size: 12px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      cursor: pointer;
+      border: none;
+      transition: all 0.2s;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .btn-red { background: var(--red); color: #fff; }
+    .btn-red:hover { background: var(--red-bright); }
+    .btn-ghost { background: transparent; color: var(--silver); border: 1px solid var(--border); }
+    .btn-ghost:hover { color: var(--white); border-color: var(--silver); }
+    .btn-green { background: var(--green); color: #000; }
+    .btn-green:hover { opacity: 0.85; }
+
+    .admin-body {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 36px 32px;
+    }
+
+    /* Stats bar */
+    .stats-bar {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-bottom: 36px;
+    }
+    .stat-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--red);
+      padding: 18px 20px;
+    }
+    .stat-box-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 36px;
+      letter-spacing: 1px;
+      line-height: 1;
+      color: var(--white);
+    }
+    .stat-box-label {
+      font-size: 11px;
+      color: var(--silver);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-top: 4px;
+    }
+
+    /* Section title */
+    .section-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 28px;
+      letter-spacing: 2px;
+      color: var(--white);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .section-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* Car list */
+    .car-list { display: flex; flex-direction: column; gap: 12px; margin-bottom: 40px; }
+    .car-row {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: 100px 1fr auto auto;
+      gap: 0;
+      align-items: center;
+      overflow: hidden;
+      transition: border-color 0.2s;
+    }
+    .car-row:hover { border-color: rgba(192,57,43,0.3); }
+    .car-row-img {
+      width: 100px;
+      height: 70px;
+      object-fit: cover;
+      display: block;
+      background: #111;
+    }
+    .car-row-info { padding: 14px 18px; }
+    .car-row-make { font-size: 11px; color: var(--red-bright); font-family: 'Rajdhani', sans-serif; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; }
+    .car-row-model { font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 1px; color: var(--white); }
+    .car-row-specs { font-size: 12px; color: var(--silver); margin-top: 2px; }
+    .car-row-price { padding: 0 20px; font-family: 'Bebas Neue', sans-serif; font-size: 22px; color: var(--gold); white-space: nowrap; }
+    .car-row-actions { padding: 0 16px; display: flex; gap: 8px; }
+    .btn-icon {
+      width: 34px; height: 34px;
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--silver);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+    }
+    .btn-icon:hover { border-color: var(--red); color: var(--red-bright); }
+    .btn-icon.del:hover { background: rgba(192,57,43,0.1); }
+    .btn-icon svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 1.5; }
+
+    /* ADD / EDIT FORM */
+    .form-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-top: 2px solid var(--red);
+      padding: 32px;
+      margin-bottom: 40px;
+    }
+    .form-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 22px;
+      letter-spacing: 2px;
+      color: var(--white);
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 16px;
+    }
+    .form-group { display: flex; flex-direction: column; gap: 6px; }
+    .form-group.full { grid-column: 1 / -1; }
+    .form-group.half { grid-column: span 2; }
+    label {
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700;
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--red-bright);
+    }
+    input, select, textarea {
+      background: var(--deep);
+      border: 1px solid var(--border);
+      color: var(--white);
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      padding: 10px 14px;
+      outline: none;
+      transition: border-color 0.2s;
+      width: 100%;
+    }
+    input:focus, select:focus, textarea:focus { border-color: var(--red); }
+    select option { background: var(--deep); }
+    textarea { resize: vertical; min-height: 60px; }
+
+    /* Badge selector */
+    .badge-options { display: flex; gap: 8px; flex-wrap: wrap; }
+    .badge-opt {
+      padding: 6px 14px;
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--silver);
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 600;
+      font-size: 11px;
+      letter-spacing: 1px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .badge-opt.active { background: var(--red); border-color: var(--red); color: #fff; }
+
+    /* Image preview */
+    .img-preview {
+      width: 100%;
+      height: 140px;
+      background: var(--deep);
+      border: 1px solid var(--border);
+      object-fit: cover;
+      display: block;
+      margin-top: 8px;
+    }
+    .img-placeholder {
+      width: 100%;
+      height: 140px;
+      background: var(--deep);
+      border: 1px dashed var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #333;
+      font-size: 12px;
+      margin-top: 8px;
+    }
+
+    /* Form actions */
+    .form-actions { display: flex; gap: 12px; margin-top: 24px; justify-content: flex-end; }
+
+    /* Toast */
+    .toast {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      background: var(--green);
+      color: #000;
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      letter-spacing: 1px;
+      padding: 14px 24px;
+      z-index: 9999;
+      display: none;
+      animation: toastIn 0.3s ease;
+      border-left: 4px solid rgba(0,0,0,0.2);
+    }
+    .toast.error { background: var(--red-bright); color: #fff; }
+    @keyframes toastIn { from { opacity:0; transform: translateY(10px); } to { opacity:1; transform: translateY(0); } }
+
+    /* Empty state */
+    .empty-state {
+      text-align: center;
+      padding: 48px;
+      color: var(--silver);
+      background: var(--surface);
+      border: 1px dashed var(--border);
+    }
+    .empty-state svg { width: 48px; height: 48px; stroke: #333; fill: none; margin-bottom: 16px; }
+    .empty-state p { font-size: 14px; }
+
+    @media (max-width: 768px) {
+      .admin-body { padding: 20px 16px; }
+      .stats-bar { grid-template-columns: 1fr 1fr; }
+      .form-grid { grid-template-columns: 1fr; }
+      .form-group.half { grid-column: 1; }
+      .car-row { grid-template-columns: 80px 1fr; }
+      .car-row-price, .car-row-actions { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- LOGIN SCREEN -->
+<div id="login-screen">
+  <div class="login-box">
+    <div class="login-logo">CAR CENTER <span>61</span></div>
+    <div class="login-sub">Admin Panel · Fahrzeugverwaltung</div>
+    <input type="password" id="pw-input" placeholder="Passwort eingeben" onkeydown="if(event.key==='Enter')tryLogin()"/>
+    <button class="login-btn" onclick="tryLogin()">ANMELDEN</button>
+    <div class="login-error" id="login-error">Falsches Passwort. Bitte erneut versuchen.</div>
+  </div>
+</div>
+
+<!-- ADMIN PANEL -->
+<div id="admin-panel">
+  <div class="admin-header">
+    <div class="admin-logo">
+      CAR CENTER <span>61</span>
+      <em>ADMIN PANEL</em>
+    </div>
+    <div class="header-actions">
+      <a href="/" class="btn-sm btn-ghost">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
+        Website ansehen
+      </a>
+      <button class="btn-sm btn-ghost" onclick="logout()">Abmelden</button>
+    </div>
+  </div>
+
+  <div class="admin-body">
+
+    <!-- STATS -->
+    <div class="stats-bar">
+      <div class="stat-box">
+        <div class="stat-box-num" id="stat-count">0</div>
+        <div class="stat-box-label">Fahrzeuge</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-box-num" id="stat-avg">0 €</div>
+        <div class="stat-box-label">Ø Preis</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-box-num" id="stat-min">0 €</div>
+        <div class="stat-box-label">Günstigstes</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-box-num" id="stat-max">0 €</div>
+        <div class="stat-box-label">Teuerstes</div>
+      </div>
+    </div>
+
+    <!-- CAR LIST -->
+    <div class="section-title">FAHRZEUGE VERWALTEN</div>
+    <div class="car-list" id="car-list"></div>
+
+    <!-- ADD / EDIT FORM -->
+    <div class="form-card" id="form-card">
+      <div class="form-title" id="form-title">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--red-bright)" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v8M8 12h8"/></svg>
+        FAHRZEUG HINZUFÜGEN
+      </div>
+
+      <div class="form-grid">
+        <!-- Row 1 -->
+        <div class="form-group">
+          <label>Marke *</label>
+          <input type="text" id="f-make" placeholder="z.B. BMW" list="makes-list"/>
+          <datalist id="makes-list">
+            <option value="BMW"/><option value="Mercedes-Benz"/><option value="Volkswagen"/>
+            <option value="Audi"/><option value="Opel"/><option value="Ford"/><option value="Seat"/>
+            <option value="Skoda"/><option value="Toyota"/><option value="Hyundai"/><option value="Kia"/>
+            <option value="Renault"/><option value="Peugeot"/><option value="Fiat"/><option value="Volvo"/>
+          </datalist>
+        </div>
+        <div class="form-group">
+          <label>Modell *</label>
+          <input type="text" id="f-model" placeholder="z.B. 3er Series 320d"/>
+        </div>
+        <div class="form-group">
+          <label>Preis (€) *</label>
+          <input type="text" id="f-price" placeholder="z.B. 18900"/>
+        </div>
+
+        <!-- Row 2 -->
+        <div class="form-group">
+          <label>Baujahr</label>
+          <input type="text" id="f-year" placeholder="z.B. 2019"/>
+        </div>
+        <div class="form-group">
+          <label>Kilometerstand</label>
+          <input type="text" id="f-km" placeholder="z.B. 85.000"/>
+        </div>
+        <div class="form-group">
+          <label>Motorleistung (PS)</label>
+          <input type="text" id="f-ps" placeholder="z.B. 150"/>
+        </div>
+
+        <!-- Row 3 -->
+        <div class="form-group">
+          <label>Kraftstoff</label>
+          <select id="f-fuel">
+            <option value="Diesel">Diesel</option>
+            <option value="Benzin">Benzin</option>
+            <option value="Hybrid">Hybrid</option>
+            <option value="Elektro">Elektro</option>
+            <option value="Erdgas (CNG)">Erdgas (CNG)</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Getriebe</label>
+          <select id="f-gear">
+            <option value="Schaltgetriebe">Schaltgetriebe</option>
+            <option value="Automatik">Automatik</option>
+            <option value="Halbautomatik">Halbautomatik</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Farbe</label>
+          <input type="text" id="f-color" placeholder="z.B. Schwarz Metallic"/>
+        </div>
+
+        <!-- Badge -->
+        <div class="form-group full">
+          <label>Badge / Etikett</label>
+          <div class="badge-options" id="badge-options">
+            <button type="button" class="badge-opt active" data-badge="">Kein Badge</button>
+            <button type="button" class="badge-opt" data-badge="NEU IM BESTAND">NEU IM BESTAND</button>
+            <button type="button" class="badge-opt" data-badge="TOP ANGEBOT" data-color="#c9a96e">TOP ANGEBOT ★</button>
+            <button type="button" class="badge-opt" data-badge="TÜV NEU">TÜV NEU</button>
+            <button type="button" class="badge-opt" data-badge="SOFORT VERFÜGBAR">SOFORT VERFÜGBAR</button>
+            <button type="button" class="badge-opt" data-badge="RESERVED" data-color="#555">RESERVIERT</button>
+          </div>
+        </div>
+
+        <!-- Image URL -->
+        <div class="form-group half">
+          <label>Fahrzeugfoto URL</label>
+          <input type="url" id="f-img" placeholder="https://... (JPG/PNG)" oninput="previewImg()"/>
+          <div id="img-preview-container">
+            <div class="img-placeholder" id="img-placeholder">
+              <span>Kein Bild – URL eingeben</span>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Schnelle Bildquellen</label>
+          <div style="display:flex;flex-direction:column;gap:6px;margin-top:2px;">
+            <button type="button" class="btn-sm btn-ghost" style="width:100%;justify-content:flex-start;" onclick="useUnsplash('BMW')">🚗 BMW (Unsplash)</button>
+            <button type="button" class="btn-sm btn-ghost" style="width:100%;justify-content:flex-start;" onclick="useUnsplash('Mercedes')">🚗 Mercedes (Unsplash)</button>
+            <button type="button" class="btn-sm btn-ghost" style="width:100%;justify-content:flex-start;" onclick="useUnsplash('Volkswagen')">🚗 VW (Unsplash)</button>
+            <button type="button" class="btn-sm btn-ghost" style="width:100%;justify-content:flex-start;" onclick="useUnsplash('sports car')">🚗 Sportwagen (Unsplash)</button>
+          </div>
+        </div>
+
+        <!-- Notes -->
+        <div class="form-group full">
+          <label>Beschreibung / Ausstattung (optional)</label>
+          <textarea id="f-notes" placeholder="z.B. Navi, Sitzheizung, Panoramadach, 1 Vorbesitzer ..."></textarea>
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <button type="button" class="btn-sm btn-ghost" onclick="resetForm()">Abbrechen</button>
+        <button type="button" class="btn-sm btn-red" onclick="saveCar()">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+          SPEICHERN
+        </button>
+      </div>
+    </div>
+
+    <!-- EXPORT / IMPORT -->
+    <div class="section-title">DATEN</div>
+    <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:40px;">
+      <button class="btn-sm btn-ghost" onclick="exportData()">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+        JSON exportieren (Backup)
+      </button>
+      <button class="btn-sm btn-ghost" onclick="document.getElementById('import-file').click()">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg>
+        JSON importieren
+      </button>
+      <input type="file" id="import-file" accept=".json" style="display:none" onchange="importData(event)"/>
+      <button class="btn-sm btn-ghost" onclick="resetToDefault()" style="color:var(--red-bright);border-color:rgba(192,57,43,0.3);">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 109-9M3 3v6h6"/></svg>
+        Beispieldaten laden
+      </button>
+    </div>
+
+  </div><!-- /admin-body -->
+</div><!-- /admin-panel -->
+
+<div class="toast" id="toast"></div>
+
+<script>
+  const ADMIN_PW = 'cc61admin';
+  const STORAGE_KEY = 'cc61_cars';
+
+  const UNSPLASH_URLS = {
+    'BMW': 'https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&w=700&q=80',
+    'Mercedes': 'https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&w=700&q=80',
+    'Volkswagen': 'https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&w=700&q=80',
+    'sports car': 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=700&q=80',
+  };
+
+  const DEFAULT_CARS = [
+    { id: 1, make: 'BMW', model: '3er Series', year: '2019', km: '85.000', ps: '150', fuel: 'Diesel', gear: 'Automatik', color: 'Schwarz Metallic', price: '18900', badge: 'NEU IM BESTAND', badgeColor: '', notes: '', img: 'https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&w=700&q=80' },
+    { id: 2, make: 'Mercedes-Benz', model: 'C 220 d', year: '2020', km: '62.000', ps: '194', fuel: 'Diesel', gear: 'Automatik', color: 'Silber', price: '28500', badge: 'TOP ANGEBOT', badgeColor: '#c9a96e', notes: 'Navi, Sitzheizung, Panoramadach', img: 'https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&w=700&q=80' },
+    { id: 3, make: 'Volkswagen', model: 'Golf VIII GTI', year: '2021', km: '38.000', ps: '245', fuel: 'Benzin', gear: 'Automatik', color: 'Weiß', price: '32900', badge: 'TÜV NEU', badgeColor: '', notes: '', img: 'https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&w=700&q=80' }
+  ];
+
+  let cars = [];
+  let editingId = null;
+  let selectedBadge = '';
+  let selectedBadgeColor = '';
+
+  // ── LOGIN ──
+  function tryLogin() {
+    const pw = document.getElementById('pw-input').value;
+    if (pw === ADMIN_PW) {
+      document.getElementById('login-screen').style.display = 'none';
+      document.getElementById('admin-panel').style.display = 'block';
+      loadData();
+    } else {
+      document.getElementById('login-error').style.display = 'block';
+      document.getElementById('pw-input').value = '';
+    }
+  }
+  function logout() {
+    document.getElementById('login-screen').style.display = 'flex';
+    document.getElementById('admin-panel').style.display = 'none';
+    document.getElementById('pw-input').value = '';
+  }
+  document.getElementById('pw-input').addEventListener('keydown', e => { if(e.key==='Enter') tryLogin(); });
+
+  // ── DATA ──
+  function loadData() {
+    try {
+      const s = localStorage.getItem(STORAGE_KEY);
+      cars = s ? JSON.parse(s) : [...DEFAULT_CARS];
+    } catch(e) { cars = [...DEFAULT_CARS]; }
+    renderAll();
+  }
+  function saveData() {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(cars));
+  }
+
+  // ── RENDER ──
+  function renderAll() {
+    renderList();
+    renderStats();
+  }
+
+  function renderList() {
+    const el = document.getElementById('car-list');
+    if (!cars.length) {
+      el.innerHTML = `<div class="empty-state"><svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13" rx="1"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg><p>Noch keine Fahrzeuge. Fügen Sie das erste hinzu!</p></div>`;
+      return;
+    }
+    el.innerHTML = cars.map(c => `
+      <div class="car-row" id="row-${c.id}">
+        <img class="car-row-img" src="${c.img || ''}" alt="${c.make} ${c.model}" onerror="this.style.background='#111';this.style.objectFit='contain';">
+        <div class="car-row-info">
+          <div class="car-row-make">${c.make}</div>
+          <div class="car-row-model">${c.model} ${c.badge ? `<span style="background:${c.badgeColor||'var(--red)'};color:${c.badgeColor?'#000':'#fff'};font-size:10px;font-family:Rajdhani,sans-serif;font-weight:700;padding:2px 7px;letter-spacing:1px;margin-left:8px;">${c.badge}</span>` : ''}</div>
+          <div class="car-row-specs">${c.year} · ${c.km} km · ${c.ps} PS · ${c.fuel}${c.color ? ' · '+c.color : ''}</div>
+        </div>
+        <div class="car-row-price">${Number(c.price).toLocaleString('de-DE')} €</div>
+        <div class="car-row-actions">
+          <button class="btn-icon" onclick="editCar(${c.id})" title="Bearbeiten">
+            <svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+          </button>
+          <button class="btn-icon del" onclick="deleteCar(${c.id})" title="Löschen">
+            <svg viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6M10 11v6M14 11v6"/><path d="M9 6V4a1 1 0 011-1h4a1 1 0 011 1v2"/></svg>
+          </button>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  function renderStats() {
+    document.getElementById('stat-count').textContent = cars.length;
+    if (!cars.length) {
+      ['stat-avg','stat-min','stat-max'].forEach(id => document.getElementById(id).textContent = '—');
+      return;
+    }
+    const prices = cars.map(c => Number(c.price)||0);
+    const avg = Math.round(prices.reduce((a,b)=>a+b,0)/prices.length);
+    document.getElementById('stat-avg').textContent = avg.toLocaleString('de-DE') + ' €';
+    document.getElementById('stat-min').textContent = Math.min(...prices).toLocaleString('de-DE') + ' €';
+    document.getElementById('stat-max').textContent = Math.max(...prices).toLocaleString('de-DE') + ' €';
+  }
+
+  // ── BADGE SELECT ──
+  document.getElementById('badge-options').addEventListener('click', e => {
+    const btn = e.target.closest('.badge-opt');
+    if (!btn) return;
+    document.querySelectorAll('.badge-opt').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    selectedBadge = btn.dataset.badge || '';
+    selectedBadgeColor = btn.dataset.color || '';
+  });
+
+  // ── IMAGE PREVIEW ──
+  function previewImg() {
+    const url = document.getElementById('f-img').value;
+    const cont = document.getElementById('img-preview-container');
+    if (url) {
+      cont.innerHTML = `<img class="img-preview" src="${url}" alt="preview" onerror="this.style.display='none'">`;
+    } else {
+      cont.innerHTML = `<div class="img-placeholder"><span>Kein Bild – URL eingeben</span></div>`;
+    }
+  }
+
+  function useUnsplash(key) {
+    const url = UNSPLASH_URLS[key] || UNSPLASH_URLS['sports car'];
+    document.getElementById('f-img').value = url;
+    previewImg();
+  }
+
+  // ── FORM ──
+  function resetForm() {
+    editingId = null;
+    document.getElementById('form-title').innerHTML = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--red-bright)" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v8M8 12h8"/></svg>FAHRZEUG HINZUFÜGEN`;
+    ['f-make','f-model','f-price','f-year','f-km','f-ps','f-img','f-notes','f-color'].forEach(id => {
+      const el = document.getElementById(id); if(el) el.value = '';
+    });
+    document.getElementById('f-fuel').value = 'Diesel';
+    document.getElementById('f-gear').value = 'Schaltgetriebe';
+    document.querySelectorAll('.badge-opt').forEach(b => b.classList.remove('active'));
+    document.querySelector('.badge-opt[data-badge=""]').classList.add('active');
+    selectedBadge = ''; selectedBadgeColor = '';
+    previewImg();
+  }
+
+  function editCar(id) {
+    const c = cars.find(x => x.id === id);
+    if (!c) return;
+    editingId = id;
+    document.getElementById('form-title').innerHTML = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>FAHRZEUG BEARBEITEN`;
+    document.getElementById('f-make').value = c.make || '';
+    document.getElementById('f-model').value = c.model || '';
+    document.getElementById('f-price').value = c.price || '';
+    document.getElementById('f-year').value = c.year || '';
+    document.getElementById('f-km').value = c.km || '';
+    document.getElementById('f-ps').value = c.ps || '';
+    document.getElementById('f-fuel').value = c.fuel || 'Diesel';
+    document.getElementById('f-gear').value = c.gear || 'Schaltgetriebe';
+    document.getElementById('f-color').value = c.color || '';
+    document.getElementById('f-img').value = c.img || '';
+    document.getElementById('f-notes').value = c.notes || '';
+    document.querySelectorAll('.badge-opt').forEach(b => b.classList.remove('active'));
+    const badgeBtn = document.querySelector(`.badge-opt[data-badge="${c.badge||''}"]`);
+    if (badgeBtn) badgeBtn.classList.add('active');
+    selectedBadge = c.badge || '';
+    selectedBadgeColor = c.badgeColor || '';
+    previewImg();
+    document.getElementById('form-card').scrollIntoView({ behavior: 'smooth' });
+  }
+
+  function saveCar() {
+    const make = document.getElementById('f-make').value.trim();
+    const model = document.getElementById('f-model').value.trim();
+    const price = document.getElementById('f-price').value.replace(/\./g,'').replace(',','.');
+    if (!make || !model || !price) { showToast('Marke, Modell und Preis sind Pflichtfelder!', true); return; }
+
+    const car = {
+      id: editingId || Date.now(),
+      make, model,
+      year: document.getElementById('f-year').value.trim(),
+      km: document.getElementById('f-km').value.trim(),
+      ps: document.getElementById('f-ps').value.trim(),
+      fuel: document.getElementById('f-fuel').value,
+      gear: document.getElementById('f-gear').value,
+      color: document.getElementById('f-color').value.trim(),
+      price: String(Number(price)||0),
+      badge: selectedBadge,
+      badgeColor: selectedBadgeColor,
+      notes: document.getElementById('f-notes').value.trim(),
+      img: document.getElementById('f-img').value.trim(),
+    };
+
+    if (editingId) {
+      const idx = cars.findIndex(x => x.id === editingId);
+      if (idx >= 0) cars[idx] = car;
+      showToast('✓ Fahrzeug aktualisiert!');
+    } else {
+      cars.push(car);
+      showToast('✓ Fahrzeug hinzugefügt!');
+    }
+    saveData();
+    renderAll();
+    resetForm();
+  }
+
+  function deleteCar(id) {
+    if (!confirm('Fahrzeug wirklich löschen?')) return;
+    cars = cars.filter(c => c.id !== id);
+    saveData();
+    renderAll();
+    showToast('Fahrzeug gelöscht.');
+  }
+
+  // ── EXPORT / IMPORT ──
+  function exportData() {
+    const blob = new Blob([JSON.stringify(cars, null, 2)], { type: 'application/json' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = `cc61-fahrzeuge-${new Date().toISOString().slice(0,10)}.json`;
+    a.click();
+    showToast('JSON exportiert!');
+  }
+  function importData(e) {
+    const file = e.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = ev => {
+      try {
+        const data = JSON.parse(ev.target.result);
+        if (!Array.isArray(data)) throw new Error();
+        cars = data;
+        saveData();
+        renderAll();
+        showToast(`✓ ${cars.length} Fahrzeuge importiert!`);
+      } catch { showToast('Ungültige JSON-Datei!', true); }
+    };
+    reader.readAsText(file);
+    e.target.value = '';
+  }
+  function resetToDefault() {
+    if (!confirm('Alle Daten zurücksetzen und Beispieldaten laden?')) return;
+    cars = [...DEFAULT_CARS];
+    saveData();
+    renderAll();
+    showToast('Beispieldaten geladen!');
+  }
+
+  // ── TOAST ──
+  function showToast(msg, isError = false) {
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    t.className = 'toast' + (isError ? ' error' : '');
+    t.style.display = 'block';
+    setTimeout(() => { t.style.display = 'none'; }, 3000);
+  }
+</script>
+</body>
+</html>
