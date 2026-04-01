@@ -1774,7 +1774,7 @@
 
   function carCardHTML(c, linkUrl, badgeLabel) {
     const isExternal = linkUrl.startsWith('http');
-    const detailUrl  = '/araba.html?id=' + c.id;
+    const detailUrl  = '/araba-' + c.id + '.html';
     const cardUrl    = isExternal ? linkUrl : detailUrl;
     const cardTarget = isExternal ? '_blank' : '_self';
 
