@@ -1356,7 +1356,66 @@
   <!-- LOCAL LISTINGS (from admin panel / JSON) -->
   <div id="panel-local">
     <div class="fahrzeuge-grid" id="fz-grid">
-      <!-- Dynamisch befüllt via JS -->
+      <a href="/fahrzeug-1.html" style="text-decoration:none;display:block;color:inherit;" class="fz-card reveal reveal-delay-1">
+        <div class="fz-img" style="position:relative;overflow:hidden;aspect-ratio:16/10;background:#111;">
+          <span class="fz-badge">NEU IM BESTAND</span>
+          <img src="https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&w=700&q=80" alt="BMW 3er Series" style="width:100%;height:100%;object-fit:cover;display:block;">
+        </div>
+        <div class="fz-body">
+          <div class="fz-make">BMW</div>
+          <div class="fz-model">3ER SERIES</div>
+          <div class="fz-specs">
+            <span class="fz-spec"><span class="fz-spec-dot"></span>2019</span>
+            <span class="fz-spec"><span class="fz-spec-dot"></span>85.000 km</span>
+            <span class="fz-spec"><span class="fz-spec-dot"></span>150 PS</span>
+            <span class="fz-spec"><span class="fz-spec-dot"></span>Diesel</span>
+          </div>
+          <div class="fz-footer">
+            <div class="fz-price">18.900 €</div>
+            <span class="fz-anfrage">Details ansehen →</span>
+          </div>
+        </div>
+      </a>
+      <a href="/fahrzeug-2.html" style="text-decoration:none;display:block;color:inherit;" class="fz-card reveal reveal-delay-2">
+        <div class="fz-img" style="position:relative;overflow:hidden;aspect-ratio:16/10;background:#111;">
+          <span class="fz-badge" style="background:#c9a96e;color:#000;">TOP ANGEBOT</span>
+          <img src="https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&w=700&q=80" alt="Mercedes C 220 d" style="width:100%;height:100%;object-fit:cover;display:block;">
+        </div>
+        <div class="fz-body">
+          <div class="fz-make">MERCEDES-BENZ</div>
+          <div class="fz-model">C 220 D</div>
+          <div class="fz-specs">
+            <span class="fz-spec"><span class="fz-spec-dot"></span>2020</span>
+            <span class="fz-spec"><span class="fz-spec-dot"></span>62.000 km</span>
+            <span class="fz-spec"><span class="fz-spec-dot"></span>194 PS</span>
+            <span class="fz-spec"><span class="fz-spec-dot"></span>Diesel</span>
+          </div>
+          <div class="fz-footer">
+            <div class="fz-price">28.500 €</div>
+            <span class="fz-anfrage">Details ansehen →</span>
+          </div>
+        </div>
+      </a>
+      <a href="/fahrzeug-3.html" style="text-decoration:none;display:block;color:inherit;" class="fz-card reveal reveal-delay-3">
+        <div class="fz-img" style="position:relative;overflow:hidden;aspect-ratio:16/10;background:#111;">
+          <span class="fz-badge">TÜV NEU</span>
+          <img src="https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&w=700&q=80" alt="VW Golf GTI" style="width:100%;height:100%;object-fit:cover;display:block;">
+        </div>
+        <div class="fz-body">
+          <div class="fz-make">VOLKSWAGEN</div>
+          <div class="fz-model">GOLF VIII GTI</div>
+          <div class="fz-specs">
+            <span class="fz-spec"><span class="fz-spec-dot"></span>2021</span>
+            <span class="fz-spec"><span class="fz-spec-dot"></span>38.000 km</span>
+            <span class="fz-spec"><span class="fz-spec-dot"></span>245 PS</span>
+            <span class="fz-spec"><span class="fz-spec-dot"></span>Benzin</span>
+          </div>
+          <div class="fz-footer">
+            <div class="fz-price">32.900 €</div>
+            <span class="fz-anfrage">Details ansehen →</span>
+          </div>
+        </div>
+      </a>
     </div>
     <div id="fz-empty" style="display:none;text-align:center;padding:60px 20px;color:var(--silver);">
       <div style="font-family:'Bebas Neue',sans-serif;font-size:32px;letter-spacing:2px;margin-bottom:12px;">KEINE FAHRZEUGE</div>
@@ -1814,10 +1873,8 @@
     }
     if (grid) grid.style.display = 'grid';
     if (empty) empty.style.display = 'none';
-    if (grid) {
-      grid.innerHTML = cars.map(c => carCardHTML(c, 'tel:+497147220038', '')).join('');
-      grid.querySelectorAll('.fz-card').forEach(el => observer.observe(el));
-    }
+    // Static cards already in HTML — only re-observe
+    if (grid) grid.querySelectorAll('.fz-card').forEach(el => observer.observe(el));
   }
 
   function renderMdecards() {
