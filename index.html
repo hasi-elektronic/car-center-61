@@ -1774,39 +1774,33 @@
 
   function carCardHTML(c, linkUrl, badgeLabel) {
     const isExternal = linkUrl.startsWith('http');
-    const detailUrl  = '/fahrzeug-' + c.id + '.html';
-    const cardUrl    = isExternal ? linkUrl : detailUrl;
-    const cardTarget = isExternal ? '_blank' : '_self';
+    const href   = isExternal ? linkUrl : ('/fahrzeug-' + c.id + '.html');
+    const target = isExternal ? '_blank' : '_self';
+    const rel    = isExternal ? 'noopener noreferrer' : '';
+    const btnTxt = badgeLabel ? (badgeLabel + ' ↗') : 'Details ansehen →';
+    const bdgStyle = c.badgeColor ? ('background:' + c.badgeColor + ';color:#000') : '';
 
-    const btnLabel = badgeLabel
-      ? badgeLabel + ' ↗'
-      : 'Details ansehen →';
-
-    return `
-      <div class="fz-card"
-        data-url="${cardUrl}"
-        data-target="${cardTarget}"
-        style="cursor:pointer;">
-        <div class="fz-img" style="position:relative;overflow:hidden;aspect-ratio:16/10;background:#111;">
-          ${c.badge ? '<span class="fz-badge" style="' + (c.badgeColor ? 'background:' + c.badgeColor + ';color:#000' : '') + '">' + c.badge + '</span>' : ''}
-          ${badgeLabel ? '<span style="position:absolute;bottom:10px;right:10px;background:rgba(8,8,8,0.85);border:1px solid rgba(192,57,43,0.5);color:var(--red-bright);font-family:Rajdhani,sans-serif;font-size:10px;font-weight:700;letter-spacing:1px;padding:3px 9px;z-index:2;">' + badgeLabel + ' ↗</span>' : ''}
-          <img src="${c.img}" alt="${c.make} ${c.model}" style="width:100%;height:100%;object-fit:cover;display:block;">
-        </div>
-        <div class="fz-body">
-          <div class="fz-make">${c.make}</div>
-          <div class="fz-model">${c.model}</div>
-          <div class="fz-specs">
-            <span class="fz-spec"><span class="fz-spec-dot"></span>${c.year}</span>
-            <span class="fz-spec"><span class="fz-spec-dot"></span>${c.km} km</span>
-            <span class="fz-spec"><span class="fz-spec-dot"></span>${c.ps} PS</span>
-            <span class="fz-spec"><span class="fz-spec-dot"></span>${c.fuel}</span>
-          </div>
-          <div class="fz-footer">
-            <div class="fz-price">${Number(c.price).toLocaleString('de-DE')} €</div>
-            <span class="fz-anfrage">${btnLabel}</span>
-          </div>
-        </div>
-      </div>`;
+    return '<a href="' + href + '" target="' + target + '" rel="' + rel + '" style="text-decoration:none;display:block;color:inherit;" class="fz-card">'
+      + '<div class="fz-img" style="position:relative;overflow:hidden;aspect-ratio:16/10;background:#111;">'
+      + (c.badge ? '<span class="fz-badge" style="' + bdgStyle + '">' + c.badge + '</span>' : '')
+      + (badgeLabel ? '<span style="position:absolute;bottom:10px;right:10px;background:rgba(8,8,8,0.85);border:1px solid rgba(192,57,43,0.5);color:var(--red-bright);font-family:Rajdhani,sans-serif;font-size:10px;font-weight:700;letter-spacing:1px;padding:3px 9px;z-index:2;">' + badgeLabel + ' ↗</span>' : '')
+      + '<img src="' + c.img + '" alt="' + c.make + ' ' + c.model + '" style="width:100%;height:100%;object-fit:cover;display:block;">'
+      + '</div>'
+      + '<div class="fz-body">'
+      + '<div class="fz-make">' + c.make + '</div>'
+      + '<div class="fz-model">' + c.model + '</div>'
+      + '<div class="fz-specs">'
+      + '<span class="fz-spec"><span class="fz-spec-dot"></span>' + c.year + '</span>'
+      + '<span class="fz-spec"><span class="fz-spec-dot"></span>' + c.km + ' km</span>'
+      + '<span class="fz-spec"><span class="fz-spec-dot"></span>' + c.ps + ' PS</span>'
+      + '<span class="fz-spec"><span class="fz-spec-dot"></span>' + c.fuel + '</span>'
+      + '</div>'
+      + '<div class="fz-footer">'
+      + '<div class="fz-price">' + Number(c.price).toLocaleString("de-DE") + ' €</div>'
+      + '<span class="fz-anfrage">' + btnTxt + '</span>'
+      + '</div>'
+      + '</div>'
+      + '</a>';
   }
 
   function renderCars() {
@@ -1849,19 +1843,7 @@
 
   renderCars();
 
-  // ── CARD CLICK — event delegation ──
-  document.addEventListener('click', function(e) {
-    const card = e.target.closest('.fz-card[data-url]');
-    if (!card) return;
-    const url    = card.dataset.url;
-    const target = card.dataset.target || '_self';
-    if (!url) return;
-    if (target === '_blank') {
-      window.open(url, '_blank', 'noopener,noreferrer');
-    } else {
-      window.location.href = url;
-    }
-  });
+
 
 </script>
 </body>
