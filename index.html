@@ -1736,6 +1736,16 @@
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
 
+  // ── CARD IMAGE CLICK ──
+  function cardImgClick(e, url, isExt) {
+    e.stopPropagation();
+    if (isExt) {
+      window.open(url, '_blank', 'noopener,noreferrer');
+    } else {
+      window.location.href = url; // tel: link
+    }
+  }
+
   // ── TAB SYSTEM ──
   function showTab(name) {
     ['local','mobilede','autoscout'].forEach(t => {
@@ -1778,8 +1788,8 @@
           ${c.badge ? `<span class="fz-badge" style="${c.badgeColor?'background:'+c.badgeColor+';color:#000':''}">${c.badge}</span>` : ''}
           ${badgeLabel ? `<span style="position:absolute;bottom:10px;right:10px;background:rgba(8,8,8,0.85);border:1px solid rgba(192,57,43,0.5);color:var(--red-bright);font-family:'Rajdhani',sans-serif;font-size:10px;font-weight:700;letter-spacing:1px;padding:3px 9px;z-index:2;">${badgeLabel}</span>` : ''}
           <img src="${c.img}" alt="${c.make} ${c.model}"
-            style="width:100%;height:100%;object-fit:cover;display:block;cursor:${isExternal?'pointer':'default'};"
-            onclick="${isExternal ? `window.open('${btnHref}','_blank')` : isPhone ? `window.location.href='${btnHref}'` : ''}">
+            style="width:100%;height:100%;object-fit:cover;display:block;cursor:pointer;"
+            onclick="cardImgClick(event, '${btnHref}', ${isExternal})">
         </div>
         <div class="fz-body">
           <div class="fz-make">${c.make}</div>
